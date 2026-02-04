@@ -60,20 +60,40 @@
 
 
   {{- if .Site.Params.selfHosted -}}
-  <link rel="stylesheet" href="{{ "css/katex.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/framework/katex.min.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "fontawesome/css/all.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/framework/bootstrap.min.css" | absURL }}" />
   {{- else -}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   {{- end -}}
 
-  <link rel="stylesheet" href="{{ "css/main.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "css/cards.css" | absURL }}" />
+  <!-- Dover Pottery Studio CSS - Organized by CSS Architecture Best Practices -->
+  <!-- Theme: Colors, fonts, animations -->
+  <link rel="stylesheet" href="{{ "css/studio/theme.css" | absURL }}" />
+  
+  <!-- Base: Typography, links, foundational elements -->
+  <link rel="stylesheet" href="{{ "css/studio/base.css" | absURL }}" />
+  
+  <!-- Layout: Page structure, containers, headers -->
+  <link rel="stylesheet" href="{{ "css/studio/layout.css" | absURL }}" />
+  
+  <!-- Components: Reusable UI elements -->
+  <link rel="stylesheet" href="{{ "css/studio/components/navigation.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/studio/components/buttons.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/studio/components/cards.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/studio/components/embeds.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/studio/components/footer.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/studio/components/forms.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/studio/components/posts.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/studio/components/media.css" | absURL }}" />
+  
+  <!-- Utilities: Helper classes and overrides -->
+  <link rel="stylesheet" href="{{ "css/studio/utilities.css" | absURL }}" />
 
   {{- if .Site.Params.staticman -}}
-  <link rel="stylesheet" href="{{ "css/staticman.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/vendor/staticman.css" | absURL }}" />
   {{- end -}}
 
   {{- if .Site.Params.selfHosted -}}
@@ -84,11 +104,11 @@
   {{- end -}}
 
   {{- if .Site.Params.useHLJS }}
-  <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/vendor/highlight.min.css" | absURL }}" />
   {{- else -}}
-  <link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/framework/syntax.css" | absURL }}" />
   {{- end -}}
-  <link rel="stylesheet" href="{{ "css/codeblock.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/framework/codeblock.css" | absURL }}" />
   
   {{- if .Site.Params.staticman.recaptcha -}}
   <script src='https://www.google.com/recaptcha/api.js'></script>
