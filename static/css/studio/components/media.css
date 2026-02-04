@@ -1,0 +1,49 @@
+/* ==========================================================================
+   MEDIA COMPONENTS
+   Images, figures, captions, galleries
+   ========================================================================== */
+
+/* --- Basic Image Classes --- */
+
+.bimage img {
+  border: 2px solid black;
+}
+
+.bimage img.floatleft {
+  float: left;
+  margin: 0 1em 1em 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.bimage img.floatright {
+  float: right;
+  margin: 0 0 1em 1em;
+  max-width: 100%;
+  height: auto;
+}
+
+.bimage img.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.img-title {
+  width: 100%;
+}
+
+/* --- Captions --- */
+
+.caption {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  font-style: italic;
+  margin: 0;
+  display: block;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}

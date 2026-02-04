@@ -1,0 +1,194 @@
+/* ==========================================================================
+   UTILITIES
+   Helper classes, overrides, third-party adjustments
+   ========================================================================== */
+
+/* --- Helper Classes --- */
+
+.hideme {
+  display: none;
+}
+
+/* --- Animated Text --- */
+
+.typed-out {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(20, end) forwards;
+  font-size: 1.6rem;
+  width: 0;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* --- Well Component --- */
+
+.well {
+  background-color: transparent;
+  background-size: contain;
+  border: 0;
+  color: var(--color6);
+  text-align: center;
+  font-family: "Old Standard TT", serif;
+  color: var(--color4);
+  font-size: 20pt;
+}
+
+@media (prefers-color-scheme: dark) {
+  .well {
+    border-color: black;
+    color: var(--color2)
+  }
+}
+
+/* --- Split Box Layout (IPython style) --- */
+
+div.splitbox {
+  width: 100%; 
+  overflow: auto;
+}
+
+div.splitbox div.left {
+  width: 48%;
+  float: left;
+}
+
+div.splitbox div.right {
+  width: 48%;
+  float: right;
+}
+
+@media only screen and (max-width: 600px) {
+  div.splitbox div.left {
+    width: 100%;
+    float: left;
+  }
+  
+  div.splitbox div.right {
+    width: 100%;
+    float: left;
+  }
+}
+
+/* --- Sharing Links --- */
+
+ul.share {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.share li {
+  display: inline-flex;
+  margin-right: 5px;
+}
+
+ul.share li:last-of-type {
+  margin-right: 0;
+}
+
+ul.share li .fab {
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  text-align: center;
+  transition: all 150ms ease-in-out;
+  color: #fff;
+}
+
+ul.share li a {
+  background-color: #b5c6ce;
+  display: block;
+  border-radius: 50%;
+  text-decoration: none !important;
+  margin: 0;
+}
+
+ul.share li:hover .fab {
+  transform: scale(1.4)
+}
+
+/* --- Tables --- */
+
+table {
+  padding: 0;
+}
+
+table tr {
+  border-top: 1px solid #cccccc;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+table tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  table tr {
+    background-color: transparent;
+  }
+  
+  table tr:nth-child(2n) {
+    background-color: transparent
+  }
+}
+
+table tr th {
+  font-weight: bold;
+  border: 1px solid black;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr td {
+  border: 1px solid black;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr th :first-child,
+table tr td :first-child {
+  margin-top: 0;
+}
+
+table tr th :last-child,
+table tr td :last-child {
+  margin-bottom: 0;
+}
+
+/* Enforce black borders on content tables */
+.container[role="main"] table {
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  outline: 1px solid #000;
+}
+
+.container[role="main"] table tr {
+  border-top: 0 !important;
+}
+
+.container[role="main"] table th,
+.container[role="main"] table td {
+  border: 1px solid #000 !important;
+  padding: .5rem .75rem;
+  text-align: left;
+}
+
+/* --- KaTeX Math --- */
+
+.katex-display > .katex {
+  overflow-x: auto;
+  overflow-y: hidden;
+}

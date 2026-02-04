@@ -1,0 +1,205 @@
+/* ==========================================================================
+   BASE STYLES
+   Foundational element styles: body, typography, links, selections
+   ========================================================================== */
+
+/* --- General --- */
+
+body {
+  font-family: "PT Mono", monospace;
+  font-size: 16px;
+  color: var(--color4);
+  position: relative;
+  background: var(--color2);
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--color3);
+    color: var(--color2);
+  }
+}
+
+/* --- Typography --- */
+
+h1 {
+  font-family: "Old Standard TT", serif;
+  color: var(--color4);
+  font-weight: 400;  
+  font-style: normal;
+  text-align: center;
+}
+
+h2,h3,h4,h5,h6 {
+  font-family: "Old Standard TT", serif;
+  color: var(--color4);
+  font-weight: 400;
+  text-align: center;
+}
+
+h2.posts-subheading {
+  font-family: "PT Mono", monospace;
+  font-weight: 200;
+  font-size: 24px;
+}
+
+h3 {
+  font-family: "PT Mono", monospace;
+  font-size: 18px;
+}
+
+h4.panel-title > span.badge {
+  float: right;
+}
+
+h4.see-also {
+  margin-top: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  h1,h2,h3,h4,h5,h6 {
+    color: var(--color2)
+  }
+}
+
+p {
+  line-height: 1.5;
+  margin: 6px 0;
+}
+
+p + p {
+  margin: 24px 0 6px 0;
+}
+
+p a {
+  color: var(--color3);
+}
+
+@media (prefers-color-scheme: dark) {
+  p a {
+    color: var(--color1);
+  }
+}
+
+a {
+  color: #008AFF;
+}
+
+@media (prefers-color-scheme: dark) {
+  a {
+    color: #50afff;
+  }
+}
+
+a:hover,
+a:focus {
+  color: #0085a1;
+}
+
+blockquote {
+  color: #808080;
+  font-style: italic;
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  blockquote {
+    border-left: 5px solid #444;
+  }
+}
+
+/* --- Horizontal Rules --- */
+
+hr.small {
+  max-width: 100px;
+  margin: 15px auto;
+  border-width: 4px;
+  border-color: inherit;
+  border-radius: 3px;
+}
+
+hr.medium {
+  max-width: 400px;
+  margin: 15px auto;
+  border-width: 3px;
+  border-color: inherit;
+  border-radius: 3px;
+}
+
+hr.long {
+  margin: 15px auto;
+  border-width: 1px;
+  border-color: inherit;
+  border-radius: 3px;
+}
+
+/* --- Selection --- */
+
+::-moz-selection, ::selection {
+  color: white;
+  text-shadow: none;
+  background: #0085a1;
+}
+
+img::selection, img::-moz-selection {
+  color: white;
+  background: transparent;
+}
+
+/* --- Images --- */
+
+img:not(.floatleft):not(.floatright):not(.centered) {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  figure:not(.dark) img, img.white {
+    background-color: white;
+  }
+}
+
+/* --- Code --- */
+
+@media (prefers-color-scheme: dark) {
+  code {
+    background-color: #222;
+    color: #fbb;
+  }
+  
+  pre code {
+    color: #ccc;
+  }
+  
+  pre.chroma {
+    color: white;
+    background-color: #444;
+  }
+  
+  pre.chroma .k {
+    color: #44AACC;
+  }
+  
+  pre.chroma .kt {
+    color: #33CCCC;
+  }
+  
+  pre.chroma .o {
+    color: #AAA;
+  }
+  
+  pre.chroma .nb {
+    color: #00fee9;
+  }
+  
+  pre.chroma .ow {
+    color: #CC0;
+  }
+}

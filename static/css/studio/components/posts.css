@@ -1,0 +1,270 @@
+/* ==========================================================================
+   POST COMPONENTS
+   Post previews, metadata, entries, tags, pagination
+   ========================================================================== */
+
+/* --- Post Preview --- */
+
+.post-preview {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+@media only screen and (min-width: 768px) {
+  .post-preview {
+    padding: 35px 0;
+  }
+}
+
+.post-preview:last-child {
+  border-bottom: 0;
+}
+
+.post-preview a {
+  text-decoration: none;
+  color: #404040;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-preview a {
+    color: #AAA;
+  }
+}
+
+.post-preview a:focus,
+.post-preview a:hover {
+  text-decoration: none;
+  color: #0085a1;
+}
+
+.post-preview .post-title {
+  font-size: 30px;
+  margin-top: 0;
+}
+
+.post-preview .post-subtitle {
+  margin: 0;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.post-preview .post-meta,
+.post-heading .post-meta,
+.page-meta {
+  color: var(--color4);
+  font-size: 14px;
+  font-style: italic;
+  margin: 0 0 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-preview .post-meta {
+    color: var(--color2);
+  }
+}
+
+.page-meta {
+  align-self: center;
+}
+
+.post-preview .post-meta a,
+.post-heading .post-meta a,
+.page-meta a {
+  color: #404040;
+  text-decoration: none;
+}
+
+.post-preview .post-entry {
+  font-family: "PT Mono", monospace;
+  font-weight: 400;
+}
+
+.post-entry-container {
+  display: inline-block;
+  width: 100%;
+}
+
+.post-entry {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.post-image {
+  float: right;
+  height: 192px;
+  width: 192px;
+  margin-top: -35px;
+  filter: grayscale(90%);
+}
+
+.post-image:hover {
+  filter: grayscale(0%);
+}
+
+.post-image img {
+  border-radius: 100px;
+  height: 192px;
+  width: 192px;
+}
+
+.post-preview .post-read-more {
+  color: var(--color3);
+  font-weight: 600;
+  float: right;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-preview .post-read-more {
+    color: var(--color1);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .post-preview .post-title {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .post-image, 
+  .post-image img {
+    height: 100px;
+    width: 100px;
+  }
+
+  .post-image {
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+    float: left;
+  }
+}
+
+/* --- Tags --- */
+
+.blog-tags {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #999;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.blog-tags:before {
+  content: "Tags: ";
+}
+
+.blog-tags a {
+  color: #008AFF;
+  text-decoration: none;
+  padding: 0px 5px;
+}
+
+.blog-tags a:before {
+  content: "#";
+}
+
+.blog-tags a:hover {
+  border-radius: 2px;
+  color: #008AFF;
+  background-color: #CCC;
+}
+
+.post-preview .blog-tags {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .post-preview .blog-tags {
+    margin-top: 10px;
+  }
+}
+
+/* --- Pager --- */
+
+.pager {
+  margin: 10px 0 0;
+}
+
+.pager.blog-pager {
+  margin-top: 10px;
+}
+
+.pager li a {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 10px 5px;
+  background: #FFF;
+  border-radius: 0;
+  color: #404040;
+}
+
+@media only screen and (min-width: 768px) {
+  .pager li a {
+    padding: 15px 25px;
+  }
+  
+  .pager.blog-pager {
+    margin-top: 40px;
+  }
+}
+
+.pager li a:hover,
+.pager li a:focus {
+  color: #FFF;
+  background: #0085a1;
+  border: 1px solid #0085a1;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pager li a {
+    background: #444;
+    color: white;
+  }
+}
+
+/* --- Disqus Comments --- */
+
+.disqus-comments {
+  margin-top: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .disqus-comments {
+    margin-top: 40px;
+  }
+}
+
+.disqus-comments button {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 10px 5px;
+  background: #FFF;
+  border-radius: 0;
+  color: #404040;
+}
+
+@media only screen and (min-width: 768px) {
+  .disqus-comments button {
+    padding: 15px 25px;
+  }
+}
+
+.disqus-comments button:hover, 
+.disqus-comments button:focus {
+  color: #FFF;
+  background: #0085a1;
+  border: 1px solid #0085a1;
+}
+
+/* --- Social Media Sharing --- */
+
+#social-share-section {
+  margin-bottom: 30px;
+}

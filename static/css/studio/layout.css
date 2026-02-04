@@ -1,0 +1,264 @@
+/* ==========================================================================
+   LAYOUT STYLES
+   Page structure: containers, main content areas, headers, sections
+   ========================================================================== */
+
+/* --- Main Container --- */
+
+.container[role=main] {
+  margin-bottom: 50px;
+  flex: 1 0 auto;
+}
+
+@media only screen and (max-width: 767px) {
+  .container[role=main] {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.main-content {
+  padding-top: 80px;
+}
+
+@media only screen and (min-width: 768px) {
+  .main-content {
+    padding-top: 130px;
+  }
+}
+
+.main-explain-area {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 15px inherit;
+}
+
+/* --- Panel Groups --- */
+
+div.panel-body a.list-group-item {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  border-radius: 0;
+  border: none;
+  font-size: 16px;
+}
+
+div.panel-group .panel {
+  border-radius: 0;
+}
+
+div.panel-group .panel+.panel {
+  margin-top: 0;
+}
+
+div.panel-body a.list-group-item.view-all {
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .panel {
+    background-color: #222;
+  }
+  
+  .list-group-item {
+    background-color: #333;
+  }
+}
+
+/* --- Post and Page Headers --- */
+
+.intro-header {
+  margin: 80px 0 20px;
+  position: relative;
+}
+
+.intro-header.big-img {
+  background: no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  margin-top: 51px; /* The small navbar is 50px tall + 1px border */
+  margin-bottom: 35px;
+}
+
+.intro-header.big-img .big-img-transition {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  -webkit-transition: opacity 1s linear;
+  -moz-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+}
+
+.intro-header .page-heading,
+.intro-header .tags-heading,
+.intro-header .categories-heading {
+  text-align: center;
+}
+
+.intro-header.big-img .page-heading,
+.intro-header.big-img .post-heading {
+  padding: 100px 0;
+  color: #FFF;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.intro-header .page-heading h1,
+.intro-header .tags-heading h1,
+.intro-header .categories-heading h1 {
+  margin-top: 0;
+  font-size: 40px;
+}
+
+.intro-header .post-heading h1 {
+  margin-top: 0;
+  font-size: 35px;
+}
+
+.intro-header .page-heading .page-subheading,
+.intro-header .post-heading .post-subheading {
+  font-size: 25px;
+  line-height: 1.1;
+  display: block;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  margin: 10px 0 0;
+}
+
+.intro-header .post-heading .post-subheading {
+  margin-bottom: 20px;
+}
+
+.intro-header.big-img .page-heading .page-subheading,
+.intro-header.big-img .post-heading .post-subheading {
+  font-weight: 400;
+}
+
+.intro-header.big-img .page-heading hr {
+  box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  -moz-box-shadow: 1px 1px 3px #000;
+}
+
+.intro-header.big-img .post-heading .post-meta {
+  color: #EEE;
+}
+
+.intro-header.big-img .img-desc {
+  background: rgba(30, 30, 30, 0.6);
+  position: absolute;
+  padding: 5px 10px;
+  font-size: 11px;
+  color: #EEE;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .intro-header {
+    margin-top: 130px;
+  }
+  
+  .intro-header.big-img {
+    margin-top: 91px;  /* Full navbar is small navbar + 20px padding on each side when expanded */
+  }
+  
+  .intro-header.big-img .page-heading,
+  .intro-header.big-img .post-heading {
+    padding: 150px 0;
+  }
+  
+  .intro-header .page-heading h1,
+  .intro-header .tags-heading h1,
+  .intro-header .categories-heading h1 {
+    font-size: 50px;
+  }
+  
+  .intro-header .post-heading h1 {
+    font-size: 50px;
+  }
+  
+  .intro-header.big-img .img-desc {
+    font-size: 14px;
+  }
+}
+
+.header-section.has-img .no-img {
+  margin-top: 0;
+  background: #FCFCFC;
+  margin: 0 0 40px;
+  padding: 20px 0;
+  box-shadow: 0 0 5px #AAA;
+}
+
+/* Many phones are 320 or 360px, so make sure images are a proper aspect ratio in those cases */
+.header-section.has-img .intro-header.no-img {
+  display: none;
+}
+
+@media only screen and (max-width: 365px) {
+  .header-section.has-img .intro-header.no-img {
+    display: block;
+  }
+  
+  .intro-header.big-img {
+    width: 100%;
+    height: 220px;
+  }
+  
+  .intro-header.big-img .page-heading,
+  .intro-header.big-img .post-heading {
+    display: none;
+  }
+  
+  .header-section.has-img .big-img {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .intro-header.big-img {
+    height: 200px;
+  }
+}
+
+/* --- Spacing Adjustments --- */
+
+/* Kill excess space after the .Content well */
+.container[role="main"] .well {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Ensure the list doesn't add its own gap */
+.posts-list {
+  margin-top: 0;
+}
+
+/* Prevent first/last child margins from creating collapsed gaps */
+.container[role="main"] .well > :first-child { 
+  margin-top: 0; 
+}
+
+.container[role="main"] .well > :last-child {
+  margin-bottom: 0; 
+}
+
+/* Shortcode wrapper spacing */
+.card-gallery { 
+  margin-bottom: 0; 
+  padding-bottom: 0; 
+}
+
+.kilnfire-button-container { 
+  margin-top: 8px; 
+  margin-bottom: 12px; 
+}
