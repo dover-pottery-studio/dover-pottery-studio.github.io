@@ -264,7 +264,7 @@ span[class*="button"]:hover {
 
 /* Month title */
 .kilnfire-calendar-month-title {
-  font-size: 2rem !important;
+  font-size: 2.5rem !important;
   font-weight: 700 !important;
   color: var(--color3) !important;
   margin: 0 !important;
@@ -290,12 +290,18 @@ span[class*="button"]:hover {
   background-color: var(--color3) !important;
   color: white !important;
   border: none !important;
-  padding: 6px 12px !important;
+  padding: 8px 14px !important;
   border-radius: 4px !important;
   cursor: pointer !important;
-  font-size: 1rem !important;
+  font-size: 1.25rem !important;
   transition: background-color 0.2s !important;
   font-weight: 500 !important;
+  line-height: 1.25rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 40px !important;
+  vertical-align: middle !important;
 }
 
 .kilnfire-calendar-button:hover {
@@ -304,7 +310,8 @@ span[class*="button"]:hover {
 
 .kilnfire-calendar-button-prev,
 .kilnfire-calendar-button-next {
-  padding: 6px 10px !important;
+  padding: 8px 14px !important;
+  min-height: 40px !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -320,11 +327,11 @@ span[class*="button"]:hover {
 
 /* Button icons */
 .kilnfire-button-icon {
-  width: 18px !important;
-  height: 18px !important;
-  display: block !important;
-  flex: 1 !important;
-  min-width: 0 !important;
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  flex-shrink: 0 !important;
 }
 
 .kilnfire-calendar-area-container {
@@ -354,9 +361,9 @@ span[class*="button"]:hover {
   text-align: center !important;
   font-weight: 700 !important;
   padding: 8px 5px !important;
-  background-color: var(--color2) !important;
-  color: #404040 !important;
-  font-size: 1rem !important;
+  background-color: var(--color3) !important;
+  color: white !important;
+  font-size: 1.25rem !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
 }
@@ -404,7 +411,7 @@ span[class*="button"]:hover {
   padding: 8px !important;
   background-color: var(--color2) !important;
   position: relative !important;
-  border: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
   display: block !important;
   overflow: hidden !important;
   min-width: 0 !important;
@@ -419,9 +426,9 @@ span[class*="button"]:hover {
 /* Day number */
 .kilnfire-calendar-day time {
   display: block !important;
-  font-size: 1.1rem !important;
+  font-size: 1.6rem !important;
   font-weight: 600 !important;
-  color: #404040 !important;
+  color: var(--color3) !important;
   margin-bottom: 5px !important;
   text-align: center !important;
 }
@@ -440,6 +447,8 @@ span[class*="button"]:hover {
   border-radius: 4px !important;
   font-weight: bold !important;
   display: inline-block !important;
+  text-align: center !important;
+  width: 100% !important;
 }
 
 /* Event list in each day */
@@ -454,15 +463,16 @@ span[class*="button"]:hover {
 
 /* Individual event */
 .kilnfire-calendar-event {
-  background-color: var(--color3) !important;
+  background-color: var(--color2) !important;
   border-radius: 3px !important;
   padding: 4px 6px !important;
-  font-size: 0.75rem !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
 }
 
 .kilnfire-calendar-event a {
   text-decoration: none !important;
-  color: white !important;
+  color: var(--color3) !important;
   display: block !important;
 }
 
@@ -488,15 +498,15 @@ span[class*="button"]:hover {
 .kilnfire-calendar-event-time {
   font-weight: bold !important;
   display: block !important;
-  font-size: 0.85rem !important;
-  color: white !important;
+  font-size: 0.9rem !important;
+  color: var(--color3) !important;
 }
 
 .kilnfire-calendar-event-title {
   margin: 2px 0 0 0 !important;
-  font-size: 0.9rem !important;
+  font-size: 1.35rem !important;
   line-height: 1.2 !important;
-  color: white !important;
+  color: var(--color3) !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -510,7 +520,19 @@ span[class*="button"]:hover {
 
 /* Not available events */
 .kilnfire-event-not-available {
-  opacity: 0.7 !important;
+  background-color: var(--color2) !important;
+}
+
+.kilnfire-event-not-available a,
+.kilnfire-event-not-available .kilnfire-calendar-event-time,
+.kilnfire-event-not-available .kilnfire-calendar-event-title {
+  color: #888 !important;
+}
+
+.kilnfire-event-not-available a,
+.kilnfire-event-not-available .kilnfire-calendar-event-time,
+.kilnfire-event-not-available .kilnfire-calendar-event-title {
+  color: #888 !important;
 }
 
 /* Responsive mobile view */
