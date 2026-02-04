@@ -41,7 +41,7 @@
 @media (prefers-color-scheme: dark) {
   .kilnfire-classes > div > div,
   .kilnfire-classes > div > a {
-    background-color: #3a3a3a !important;
+    background-color: var(--color3) !important;
   }
 }
 
