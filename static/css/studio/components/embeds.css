@@ -213,3 +213,332 @@ span[class*="button"]:hover {
     font-size: 1.2rem !important;
   }
 }
+
+/* ===== KILNFIRE CALENDAR VIEW STYLING ===== */
+
+/* Calendar wrapper - force vertical single-column layout */
+.kilnfire-calendar.kilnfire-class-calendar {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 20px 0 !important;
+  background-color: var(--color2) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .kilnfire-calendar.kilnfire-class-calendar {
+    background-color: #2a2a2a !important;
+  }
+}
+
+/* Calendar header - ensure it's full width above calendar */
+.kilnfire-calendar-header {
+  width: 100% !important;
+  display: block !important;
+  margin-bottom: 15px !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  flex: none !important;
+}
+
+/* Header left section - horizontal layout with navigation and title */
+.kilnfire-calendar-header-left {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  flex-wrap: nowrap !important;
+  gap: 15px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Hide the right header section if it exists */
+.kilnfire-calendar-header-right {
+  display: none !important;
+}
+
+/* Month title */
+.kilnfire-calendar-month-title {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: var(--color3) !important;
+  margin: 0 !important;
+  flex: 1 !important;
+  min-width: 150px !important;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .kilnfire-calendar-month-title {
+    color: var(--color1) !important;
+  }
+}
+
+/* Navigation buttons */
+.kilnfire-calendar-header-buttons {
+  display: flex !important;
+  gap: 5px !important;
+  align-items: center !important;
+}
+
+.kilnfire-calendar-button {
+  background-color: var(--color3) !important;
+  color: white !important;
+  border: none !important;
+  padding: 6px 12px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  transition: background-color 0.2s !important;
+  font-weight: 500 !important;
+}
+
+.kilnfire-calendar-button:hover {
+  background-color: var(--color4) !important;
+}
+
+.kilnfire-calendar-button-prev,
+.kilnfire-calendar-button-next {
+  padding: 6px 10px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .kilnfire-calendar-button {
+    background-color: var(--color4) !important;
+  }
+  
+  .kilnfire-calendar-button:hover {
+    background-color: var(--color1) !important;
+    color: var(--color3) !important;
+  }
+}
+
+/* Button icons */
+.kilnfire-button-icon {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.kilnfire-calendar-area-container {
+  width: 100% !important;
+  display: block !important;
+  min-width: 0mportant;
+  display: block !important;
+}
+
+.kilnfire-calendar-area-container {
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Day headers (S M T W T F S) */
+.kilnfire-calendar-daysofweek {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 2px !important;
+  margin-bottom: 0 !important;
+  background-color: var(--color2) !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.kilnfire-calendar-dayheader {
+  text-align: center !important;
+  font-weight: 700 !important;
+  padding: 8px 5px !important;
+  background-color: var(--color2) !important;
+  color: #404040 !important;
+  font-size: 1rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .kilnfire-calendar-daysofweek {
+    background-color: #333 !important;
+  }
+  .kilnfire-calendar-dayheader {
+    background-color: #333 !important;
+    color: #e0e0e0 !important;
+  }
+}
+
+/* Desktop calendar grid - force single column display */
+.kilnfire-calendar-desktop {
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+  gap: 2px !important;
+  background-color: var(--color2) !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .kilnfire-calendar-desktop {
+    background-color: #333 !important;
+  }
+}
+
+/* Force dates area to be full width */
+.kilnfire-calendar-dates-area {
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Hide mobile calendar on desktop */
+.kilnfire-calendar-mobile {
+  display: none !important;
+}
+
+/* Individual day cells */
+.kilnfire-calendar-day {
+  min-height: 100px !important;
+  padding: 8px !important;
+  background-color: var(--color2) !important;
+  position: relative !important;
+  border: none !important;
+  display: block !important;
+  overflow: hidden !important;
+  min-width: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .kilnfire-calendar-day {
+    background-color: #333 !important;
+  }
+}
+
+/* Day number */
+.kilnfire-calendar-day time {
+  display: block !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: #404040 !important;
+  margin-bottom: 5px !important;
+  text-align: center !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .kilnfire-calendar-day time {
+    color: #e0e0e0 !important;
+  }
+}
+
+/* Today highlight */
+.kilnfire-calendar-is-today {
+  background-color: var(--color1) !important;
+  color: white !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  font-weight: bold !important;
+  display: inline-block !important;
+}
+
+/* Event list in each day */
+.kilnfire-calendar-day-events {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+}
+
+/* Individual event */
+.kilnfire-calendar-event {
+  background-color: var(--color3) !important;
+  border-radius: 3px !important;
+  padding: 4px 6px !important;
+  font-size: 0.75rem !important;
+}
+
+.kilnfire-calendar-event a {
+  text-decoration: none !important;
+  color: white !important;
+  display: block !important;
+}
+
+.kilnfire-calendar-event a:hover {
+  color: var(--color1) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .kilnfire-calendar-event {
+    background-color: var(--color4) !important;
+  }
+  
+  .kilnfire-calendar-event a {
+    color: white !important;
+  }
+  
+  .kilnfire-calendar-event a:hover {
+    color: white !important;
+  }
+}
+
+/* Event time and title */
+.kilnfire-calendar-event-time {
+  font-weight: bold !important;
+  display: block !important;
+  font-size: 0.85rem !important;
+  color: white !important;
+}
+
+.kilnfire-calendar-event-title {
+  margin: 2px 0 0 0 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.2 !important;
+  color: white !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .kilnfire-calendar-event-time {
+    color: white !important;
+  }
+  .kilnfire-calendar-event-title {
+    color: white !important;
+  }
+}
+
+/* Not available events */
+.kilnfire-event-not-available {
+  opacity: 0.7 !important;
+}
+
+/* Responsive mobile view */
+@media (max-width: 768px) {
+  .kilnfire-calendar-desktop {
+    display: none !important;
+  }
+  
+  .kilnfire-calendar-mobile {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 2px !important;
+    background-color: #e0e0e0 !important;
+    padding: 2px !important;
+  }
+  
+  .kilnfire-calendar-header-left {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .kilnfire-calendar-month-title {
+    font-size: 1.4rem !important;
+    text-align: center !important;
+  }
+  
+  .kilnfire-calendar-day {
+    min-height: 60px !important;
+    padding: 4px !important;
+  }
+}
