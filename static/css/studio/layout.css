@@ -252,6 +252,27 @@ div.panel-body a.list-group-item.view-all {
   margin-bottom: 0; 
 }
 
+/* Latest News section styling */
+.container[role="main"] .well h3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Buttons use PT Mono font */
+.btn,
+.btn-primary,
+.btn-default {
+  font-family: "PT Mono", monospace;
+}
+
+/* Page subtitle uses PT Mono */
+.intro-header .page-heading .page-subheading,
+.intro-header.big-img .page-heading .page-subheading {
+  font-family: "PT Mono", monospace;
+}
+
 /* Shortcode wrapper spacing */
 .card-gallery { 
   margin-bottom: 0; 

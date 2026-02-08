@@ -191,20 +191,20 @@
 }
 
 .pager li a {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
+  font-family: "PT Mono", monospace;
   font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  padding: 10px 5px;
-  background: #FFF;
-  border-radius: 0;
-  color: #404040;
+  font-weight: 600;
+  padding: 10px 15px;
+  background-color: var(--color3);
+  color: var(--color1);
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.3s;
 }
 
 @media only screen and (min-width: 768px) {
   .pager li a {
-    padding: 15px 25px;
+    padding: 12px 20px;
   }
   
   .pager.blog-pager {
@@ -214,15 +214,21 @@
 
 .pager li a:hover,
 .pager li a:focus {
-  color: #FFF;
-  background: #0085a1;
-  border: 1px solid #0085a1;
+  background-color: var(--color2);
+  color: var(--color4);
+  text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
   .pager li a {
-    background: #444;
-    color: white;
+    background-color: var(--color4);
+    color: var(--color2);
+  }
+  
+  .pager li a:hover,
+  .pager li a:focus {
+    background-color: var(--color3);
+    color: var(--color1);
   }
 }
 

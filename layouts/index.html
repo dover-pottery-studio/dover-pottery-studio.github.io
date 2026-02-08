@@ -8,26 +8,16 @@
           </div>
         {{ end }}
 
-        <div class="posts-list">
-          {{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-          {{ range $pag.Pages }}
-            {{ partial "post_preview" . }}
-          {{ end }}
-        </div>
-
-        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-          <ul class="pager main-pager">
-            {{ if .Paginator.HasPrev }}
-              <li class="previous">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
-              </li>
-            {{ end }}
-            {{ if .Paginator.HasNext }}
-              <li class="next">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
-              </li>
-            {{ end }}
-          </ul>
+        {{ $latestPost := index (first 1 (where site.RegularPages "Type" "in" site.Params.mainSections)) 0 }}
+        {{ if $latestPost }}
+          <div class="well">
+            <p>
+              <strong><a href="{{ $latestPost.Permalink }}">{{ $latestPost.Title }}</a></strong> 
+              <span class="text-muted">- {{ $latestPost.Date.Format "January 2, 2006" }}</span>
+            </p>
+            <p>{{ $latestPost.Summary }}</p>
+            <a href="/posts/" class="btn btn-primary">View All News →</a>
+          </div>
         {{ end }}
       </div>
     </div>
