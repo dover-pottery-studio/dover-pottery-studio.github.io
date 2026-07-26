@@ -3,27 +3,6 @@
    Helper classes, overrides, third-party adjustments
    ========================================================================== */
 
-/* --- Helper Classes --- */
-
-.hideme {
-  display: none;
-}
-
-/* --- Animated Text --- */
-
-.typed-out {
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 3s steps(20, end) forwards;
-  font-size: 1.6rem;
-  width: 0;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
 /* --- Well Component --- */
 
 /* Default well styling - minimal, left-aligned */
@@ -46,33 +25,22 @@
   font-size: 20pt;
 }
 
-/* --- Split Box Layout (IPython style) --- */
+/* --- 404 Page --- */
 
-div.splitbox {
-  width: 100%; 
-  overflow: auto;
+.error-emoji {
+  font-size: 48px;
+  margin-top: 80px;
+  color: var(--color3);
 }
 
-div.splitbox div.left {
-  width: 48%;
-  float: left;
-}
-
-div.splitbox div.right {
-  width: 48%;
-  float: right;
-}
-
-@media only screen and (max-width: 600px) {
-  div.splitbox div.left {
-    width: 100%;
-    float: left;
+@media (prefers-color-scheme: dark) {
+  .error-emoji {
+    color: var(--color1);
   }
-  
-  div.splitbox div.right {
-    width: 100%;
-    float: left;
-  }
+}
+
+.error-text {
+  font-size: 18px;
 }
 
 /* --- Sharing Links --- */

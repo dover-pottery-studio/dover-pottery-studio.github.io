@@ -1,8 +1,0 @@
-<div class="card">
-    <img class="card-img-top" src="{{ .Get "image" }}" alt="{{ .Get "title" }}">
-    <div class="card-body">
-      <h5 class="card-title">{{ .Get "title" | safeHTML }}</h5>
-      <p class="card-text">{{ .Get "description" }}</p>
-      <a href="{{ .Get "url" }}" class="button" target="_blank">{{ .Get "buttonText" | default "Read More" }}</a>
-    </div>
-  </div>

@@ -34,19 +34,10 @@
 }
 
 .navbar-custom .navbar-brand:hover,
-.navbar-custom .navbar-brand:focus ,
+.navbar-custom .navbar-brand:focus,
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
-  color: #0085a1;
-}
-
-.navbar-custom .navbar-brand:hover,
-.navbar-custom .navbar-brand:focus ,
-.navbar-custom .nav li a:hover,
-.navbar-custom .nav li a:focus {
-  @media (prefers-color-scheme: dark) {
-    color: var(--color1);
-  }
+  color: var(--color1);
 }
 
 /* Navbar Logo */

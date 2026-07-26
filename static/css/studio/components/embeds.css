@@ -349,13 +349,6 @@ span[class*="button"]:hover {
 .kilnfire-calendar-area-container {
   width: 100% !important;
   display: block !important;
-  min-width: 0mportant;
-  display: block !important;
-}
-
-.kilnfire-calendar-area-container {
-  width: 100% !important;
-  display: block !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -556,12 +549,6 @@ span[class*="button"]:hover {
 /* Not available events */
 .kilnfire-event-not-available {
   background-color: var(--color2) !important;
-}
-
-.kilnfire-event-not-available a,
-.kilnfire-event-not-available .kilnfire-calendar-event-time,
-.kilnfire-event-not-available .kilnfire-calendar-event-title {
-  color: #888 !important;
 }
 
 .kilnfire-event-not-available a,

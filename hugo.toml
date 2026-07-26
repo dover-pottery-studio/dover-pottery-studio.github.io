@@ -33,12 +33,12 @@ weight = 30
 [[menus.main]]
 name = 'News'
 pageRef = '/posts'
-weight = 30
+weight = 40
 
 [[menus.main]]
 name = 'Supplies'
 pageRef = '/supplies'
-weight = 30
+weight = 50
 
 [module]
   [module.hugoVersion]

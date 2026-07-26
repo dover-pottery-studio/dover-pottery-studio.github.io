@@ -11,12 +11,8 @@
         {{ $latestPost := index (first 1 (where site.RegularPages "Type" "in" site.Params.mainSections)) 0 }}
         {{ if $latestPost }}
           <div class="well">
-            <p>
-              <strong><a href="{{ $latestPost.Permalink }}">{{ $latestPost.Title }}</a></strong> 
-              <span class="text-muted">- {{ $latestPost.Date.Format "January 2, 2006" }}</span>
-            </p>
-            <p>{{ $latestPost.Summary }}</p>
-            <a href="/posts/" class="btn btn-primary">View All News →</a>
+            {{ partial "post_preview.html" $latestPost }}
+            <a href="/posts/" class="button">View All News →</a>
           </div>
         {{ end }}
       </div>

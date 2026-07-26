@@ -5,7 +5,7 @@ image: "/img/cc4/pexels-shvetsa-5642018-square-thumb.jpg"
 bigimg: [{"src": "/img/cc4/pexels-shvetsa-5642018-square.jpg"}]
 ---
 
-{{< figure src="/img/cc4/taylor-heery-qcqFunNU2Co-unsplash.jpg" height=400 class="floatleft" alt="Pottery tools" >}}
+{{< figure src="/img/cc4/taylor-heery-qcqFunNU2Co-unsplash.jpg" class="floatleft" alt="Pottery tools" >}}
 
 While classes include enough clay for many students, you may find yourself needing more clay 
 if you come to more open studio times. Clay can be purchased through our Supplies page in our Kilnfire app once you are

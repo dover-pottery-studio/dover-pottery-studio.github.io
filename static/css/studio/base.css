@@ -6,7 +6,7 @@
 /* --- General --- */
 
 body {
-  font-family: "PT Mono", monospace;
+  font-family: 'Lora', 'Times New Roman', serif;
   font-size: 16px;
   color: var(--color4);
   position: relative;
@@ -47,7 +47,6 @@ h2.posts-subheading {
 }
 
 h3 {
-  font-family: "PT Mono", monospace;
   font-size: 18px;
 }
 
@@ -85,18 +84,25 @@ p a {
 }
 
 a {
-  color: #008AFF;
+  color: var(--color3);
 }
 
 @media (prefers-color-scheme: dark) {
   a {
-    color: #50afff;
+    color: var(--color1);
   }
 }
 
 a:hover,
 a:focus {
-  color: #0085a1;
+  color: var(--color1);
+}
+
+@media (prefers-color-scheme: dark) {
+  a:hover,
+  a:focus {
+    color: var(--color2);
+  }
 }
 
 blockquote {
@@ -144,7 +150,7 @@ hr.long {
 ::-moz-selection, ::selection {
   color: white;
   text-shadow: none;
-  background: #0085a1;
+  background: var(--color3);
 }
 
 img::selection, img::-moz-selection {
