@@ -26,6 +26,12 @@
   .card-body {
     padding: 10px; /* Reduced padding */
     flex: 1; /* Ensure the body takes up remaining space */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-body .button {
+    margin-top: auto; /* Pin button to the bottom of the card regardless of text length */
   }
   
   .card-title {
@@ -51,18 +57,70 @@
     .card {
       flex: 1 1 calc(100% - 20px); /* One card per row on small screens */
     }
-  
+
     .card-title {
       font-size: 2.4rem; /* Slightly smaller font size */
     }
-  
+
     .card-text {
       font-size: 1.3rem; /* Slightly smaller font size */
     }
-  
+
     .btn {
       padding: 8px 16px; /* Adjust padding */
       font-size: 1rem; /* Adjust font size */
     }
+  }
+
+  /* Compact card gallery - secondary/tier-2 offerings (e.g. Memberships, Supplies) */
+  .card-gallery.compact .card {
+    max-width: 220px;
+  }
+
+  .card-gallery.compact .card-img-top {
+    max-height: 130px;
+    object-fit: cover;
+  }
+
+  .card-gallery.compact .card-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-gallery.compact .card-text {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Team member cards */
+  .team-member .team-member-photo {
+    width: 140px;
+    height: 140px;
+    margin: 20px auto 0;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .team-member .card-title {
+    font-size: 1.7rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .team-member-title {
+    color: var(--color3);
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .team-member-title {
+      color: var(--color1);
+    }
+  }
+
+  .team-member .card-text {
+    font-size: 1rem;
+    text-align: center;
   }
   

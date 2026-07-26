@@ -1,5 +1,7 @@
 {{/* Kilnfire class management embed shortcode */}}
 {{ $view := .Get "view" | default "blocks" }}
 {{ $orgId := .Get "org-id" | default "25" }}
-<div class="kilnfire-classes" data-org-id="{{ $orgId }}" data-view="{{ $view }}"></div>
+{{ $template := .Get "template" }}
+{{ $hideTemplates := .Get "hide-templates" }}
+<div class="kilnfire-classes" data-org-id="{{ $orgId }}" data-view="{{ $view }}"{{ with $template }} data-template-id="{{ . }}"{{ end }}{{ with $hideTemplates }} data-hide-templates="{{ . }}"{{ end }}></div>
 <script src="https://kilnfire.com/classembed.js"></script>

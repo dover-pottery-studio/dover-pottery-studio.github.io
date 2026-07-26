@@ -1,0 +1,12 @@
+<!-- layouts/shortcodes/team-member.html -->
+{{ $name := .Get "name" }}
+{{ $title := .Get "title" }}
+{{ $photo := .Get "photo" | default "/img/team/placeholder-headshot.svg" }}
+<div class="card team-member">
+  <img class="card-img-top team-member-photo" src="{{ $photo | relURL }}" alt="{{ $name }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ $name }}</h5>
+    {{ with $title }}<p class="team-member-title">{{ . }}</p>{{ end }}
+    <p class="card-text">{{ .Inner }}</p>
+  </div>
+</div>

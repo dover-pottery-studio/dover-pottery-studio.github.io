@@ -26,6 +26,11 @@ pageRef = '/classes'
 weight = 20
 
 [[menus.main]]
+name = 'Pop-Up Pots'
+pageRef = '/pop-up-pots'
+weight = 25
+
+[[menus.main]]
 name = 'Memberships'
 pageRef = '/memberships'
 weight = 30
@@ -39,6 +44,11 @@ weight = 40
 name = 'Supplies'
 pageRef = '/supplies'
 weight = 50
+
+[[menus.main]]
+name = 'About'
+pageRef = '/about'
+weight = 60
 
 [module]
   [module.hugoVersion]

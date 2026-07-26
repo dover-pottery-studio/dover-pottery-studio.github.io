@@ -1,4 +1,5 @@
 <!-- layouts/shortcodes/card-gallery.html -->
-<div class="card-gallery">
+{{ $extraClass := .Get "class" }}
+<div class="card-gallery{{ with $extraClass }} {{ . }}{{ end }}">
   {{ .Inner }}
 </div>

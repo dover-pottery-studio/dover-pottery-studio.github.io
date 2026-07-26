@@ -40,3 +40,28 @@
   text-align: center;
   margin: 20px 0;
 }
+
+/* Promo Banner - e.g. Gift Cards callout */
+.promo-banner {
+  background-color: var(--color2);
+  border-radius: 8px;
+  padding: 30px 20px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.promo-banner h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.promo-banner p {
+  margin: 10px 0 20px;
+  font-size: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .promo-banner {
+    background-color: var(--color4);
+  }
+}
