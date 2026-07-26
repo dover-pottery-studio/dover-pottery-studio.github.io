@@ -158,8 +158,8 @@
 
 /* Button styling - RED/DARK BROWN in light mode, BLUE in dark mode */
 .kilnfire-classes button,
-a[class*="button"],
-span[class*="button"] {
+.kilnfire-classes a[class*="button"],
+.kilnfire-classes span[class*="button"] {
   background-color: var(--color3) !important;
   color: #ffffff !important;
   border: none !important;
@@ -177,22 +177,22 @@ span[class*="button"] {
 /* Dark mode buttons - BLUE */
 @media (prefers-color-scheme: dark) {
   .kilnfire-classes button,
-  a[class*="button"],
-  span[class*="button"] {
+  .kilnfire-classes a[class*="button"],
+  .kilnfire-classes span[class*="button"] {
     background-color: var(--color4) !important;
     color: #ffffff !important;
   }
 
   .kilnfire-classes button:hover,
-  a[class*="button"]:hover,
-  span[class*="button"]:hover {
+  .kilnfire-classes a[class*="button"]:hover,
+  .kilnfire-classes span[class*="button"]:hover {
     background-color: #4a7a9e !important;
   }
 }
 
 .kilnfire-classes button:hover,
-a[class*="button"]:hover,
-span[class*="button"]:hover {
+.kilnfire-classes a[class*="button"]:hover,
+.kilnfire-classes span[class*="button"]:hover {
   background-color: #6f3d42 !important;
   color: #ffffff !important;
 }
