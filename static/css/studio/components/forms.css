@@ -12,9 +12,25 @@
   margin: 0 auto;
 }
 
-#mc_embed_signup_scroll h2, 
+#mc_embed_signup_scroll h2,
 #mc_embed_signup label {
   color: var(--color2);
+}
+
+/* Override Mailchimp's own classic embed CSS, which loads after ours.
+   The form always sits on the footer's dark background (color3 in light
+   mode, color4 in dark mode), so the button uses gold rather than the
+   site's usual dark button fill, which would blend into the footer. */
+#mc_embed_signup input.button {
+  background-color: var(--color1) !important;
+  color: var(--color3) !important;
+  border: none !important;
+  border-radius: 5px !important;
+}
+
+#mc_embed_signup input.button:hover {
+  background-color: var(--color2) !important;
+  color: var(--color4) !important;
 }
 
 /* --- Google Custom Search Engine --- */

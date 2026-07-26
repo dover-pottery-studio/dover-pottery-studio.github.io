@@ -15,7 +15,10 @@ footer a {
   color: var(--color2);
 }
 
-footer hr {
+footer hr,
+footer hr.small,
+footer hr.medium,
+footer hr.long {
   border: none;
   border-top: 2px solid;
   margin: 20px auto;

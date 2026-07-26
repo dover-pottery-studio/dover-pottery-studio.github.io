@@ -9,6 +9,7 @@
 .well {
   background-color: transparent;
   border: 0;
+  box-shadow: none;
   color: var(--color4);
 }
 

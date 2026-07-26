@@ -22,7 +22,7 @@
   }
 }
 
-.post-preview:last-child {
+.post-preview:last-of-type {
   border-bottom: 0;
 }
 
