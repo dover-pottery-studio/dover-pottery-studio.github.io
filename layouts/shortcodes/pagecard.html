@@ -1,10 +1,20 @@
 <!-- layouts/shortcodes/pagecard.html -->
-{{ $page := .Site.GetPage (printf "/%s" (.Get "page")) }}
-<div class="card">
-  <img class="card-img-top" src="{{ $page.Params.image }}" alt="{{ $page.Title }}">
+{{ $title := .Get "title" }}
+{{ $description := .Get "description" }}
+{{ $image := .Get "image" }}
+{{ $url := .Get "url" }}
+{{ with .Get "page" }}
+  {{ $page := $.Site.GetPage (printf "/%s" .) }}
+  {{ $title = $page.Title }}
+  {{ $description = $page.Params.description }}
+  {{ $image = $page.Params.image }}
+  {{ $url = $page.RelPermalink }}
+{{ end }}
+{{ $external := strings.HasPrefix $url "http" }}
+<a class="card" href="{{ $url }}"{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>
+  <img class="card-img-top" src="{{ $image }}" alt="{{ $title }}">
   <div class="card-body">
-    <h5 class="card-title">{{ $page.Title }}</h5>
-    <p class="card-text">{{ $page.Params.description }}</p>
-    <a href="{{ $page.RelPermalink }}" class="button">Read More</a>
+    <h5 class="card-title">{{ $title }}</h5>
+    <p class="card-text">{{ $description }}</p>
   </div>
-</div>
+</a>

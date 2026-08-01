@@ -7,6 +7,10 @@ pygmentsUseClasses = true
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 
+[author]
+facebook = "https://www.facebook.com/doverpottery.studio"
+instagram = "https://www.instagram.com/doverpottery.studio/"
+
 [Params]
 subtitle = "a learning artspace"
 mainSections = ["posts"]

@@ -1,0 +1,9 @@
+social_icons:
+  - id: facebook
+    title: Facebook
+    icon: fab fa-facebook
+    url: "https://facebook.com/%s"
+  - id: instagram
+    title: Instagram
+    icon: fab fa-instagram
+    url: "https://instagram.com/%s"

@@ -1,7 +1,7 @@
 ---
 title: "Studio Classes"
-description: "Workshops and multi-week classes"
-image: "/img/cc4/pexels-gabby-k-5302906-square-thumb.jpg"
+description: "Workshops and classes for all levels"
+image: "/img/dps-logo-v2-tan-card.png"
 bigimg: [{"src": "/img/cc4/pexels-gabby-k-5302906-square.jpg"}]
 ---
 

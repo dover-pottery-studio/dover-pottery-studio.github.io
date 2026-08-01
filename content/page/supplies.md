@@ -1,6 +1,6 @@
 ---
 title: "Supplies"
-description: "Clay, tools, glazes, and merch"
+description: "Clay, tools, glazes, and studio merch"
 image: "/img/cc4/pexels-shvetsa-5642018-square-thumb.jpg"
 bigimg: [{"src": "/img/cc4/pexels-shvetsa-5642018-square.jpg"}]
 ---

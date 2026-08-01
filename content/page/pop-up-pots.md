@@ -1,6 +1,6 @@
 ---
 title: "Pop-Up Pots"
-description: "On-location clay workshops around the Seacoast"
+description: "On-location handbuilding workshops across NH & Maine"
 image: "/img/2025-11/pop-up-pots.png"
 bigimg: [{"src": "/img/2025-06/clay-and-cider-class.png"}]
 ---
