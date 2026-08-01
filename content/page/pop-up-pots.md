@@ -1,7 +1,7 @@
 ---
 title: "Pop-Up Pots"
 description: "On-location handbuilding workshops across NH & Maine"
-image: "/img/2025-11/pop-up-pots.png"
+image: "/img/popup-pots-logo.png"
 bigimg: [{"src": "/img/2025-06/clay-and-cider-class.png"}]
 ---
 
