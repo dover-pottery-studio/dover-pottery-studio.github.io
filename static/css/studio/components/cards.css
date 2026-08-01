@@ -91,26 +91,6 @@
     }
   }
 
-  /* Compact card gallery - secondary/tier-2 offerings (e.g. Memberships, Supplies) */
-  .card-gallery.compact .card {
-    max-width: 220px;
-  }
-
-  .card-gallery.compact .card-img-top {
-    max-height: 130px;
-    object-fit: cover;
-  }
-
-  .card-gallery.compact .card-title {
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .card-gallery.compact .card-text {
-    font-size: 1.3rem;
-    margin-bottom: 0.75rem;
-  }
-
   /* Team member cards */
   .team-member .team-member-photo {
     width: 140px;

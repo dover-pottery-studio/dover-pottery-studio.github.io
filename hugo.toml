@@ -46,7 +46,7 @@ weight = 40
 
 [[menus.main]]
 name = 'Supplies'
-pageRef = '/supplies'
+url = 'https://doverpotterystudio.kilnfire.com/supplies'
 weight = 50
 
 [[menus.main]]

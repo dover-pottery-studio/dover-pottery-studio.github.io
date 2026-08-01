@@ -7,8 +7,8 @@ title: "Offerings"
     {{< pagecard page="page/pop-up-pots" >}}
 {{< /card-gallery >}}
 
-{{< card-gallery class="compact" >}}
-    {{< pagecard title="Gift Cards" description="The perfect gift for any maker" image="/img/dps-logo-v2-gold.png" url="https://doverpotterystudio.kilnfire.com/gift-card" >}}
-    {{< pagecard page="page/memberships" >}}
-    {{< pagecard page="page/supplies" >}}
-{{< /card-gallery >}}
+{{< sep >}}
+
+Beyond classes, Dover Pottery Studio offers [memberships](/page/memberships/) for full studio access, [clay and supplies](https://doverpotterystudio.kilnfire.com/supplies) for purchase, and [gift cards](https://doverpotterystudio.kilnfire.com/gift-card) for the maker in your life.
+
+{{< sep >}}
