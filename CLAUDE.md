@@ -48,6 +48,10 @@ These are the building blocks content authors use inside `.md` files:
 - `partials/seo/` builds Open Graph, Twitter Card, and schema.org structured data (organization, website, article/post, breadcrumb) — relevant if changing page metadata or front matter fields that feed SEO.
 - CSS is organized under `static/css/studio/`: `base.css`, `layout.css`, `theme.css`, `utilities.css`, plus `components/` (buttons, cards, embeds, footer, forms, media, navigation, posts). `static/css/framework/` (Bootstrap) and `static/css/vendor/` (PhotoSwipe, staticman, highlight.js) are third-party and shouldn't be hand-edited.
 
+## Working with the user
+
+- Use the Chrome browser tool sparingly. Never use it to verify or validate changes (e.g. confirming a fix rendered correctly, checking a page after edits) — the user does that verification step themselves. Only reach for it when the user explicitly asks for browser interaction.
+
 ## Notes
 
 - i18n files exist for many languages, but the site is effectively English-only in practice (only `en-us` is configured in `hugo.toml`); don't assume multilingual routing is active.

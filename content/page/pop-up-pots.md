@@ -5,7 +5,9 @@ image: "/img/popup-pots-logo.png"
 bigimg: [{"src": "/img/2025-06/clay-and-cider-class.png", "position": "center 35%"}]
 ---
 
-Pop-Up Pots are on-location, single-session handbuilding classes hosted at partner venues throughout the community — cideries, breweries, farms, and more. Each event features a guided clay project designed to be enjoyable for all levels, whether it's your first time working with clay or you're an experienced maker looking for a fun creative session. It's a great way to sip, socialize, and create something handmade to take home.
+Pop-Up Pots are on-location, single-session handbuilding classes hosted at partner venues throughout the community — cideries, breweries, farms, and more. Looking for classes in the studio instead? Visit [Studio Classes](/page/classes/).
+
+Here's how it works: you build it at the event, we glaze and fire it back at the studio, and you pick up your finished piece in about a month.
 
 {{< tabs >}}
 {{< tab name="Classes" >}}

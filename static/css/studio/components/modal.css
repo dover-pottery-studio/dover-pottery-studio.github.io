@@ -87,6 +87,37 @@ body.dps-modal-open {
   }
 }
 
+/* Price and description, copied in from the card via initClassTypeModals
+   in main.js - styled to match how they read on the card (mono price
+   label, serif body text for the description). */
+.dps-class-modal-price {
+  font-family: "PT Mono", monospace;
+  color: var(--color3);
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dps-class-modal-price {
+    color: var(--color2);
+  }
+}
+
+.dps-class-modal-desc p {
+  font-family: 'Lora', 'Times New Roman', serif;
+  color: var(--color3);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dps-class-modal-desc p {
+    color: var(--color1);
+  }
+}
+
 @media (max-width: 640px) {
   .dps-class-modal.is-open {
     padding: 10px;

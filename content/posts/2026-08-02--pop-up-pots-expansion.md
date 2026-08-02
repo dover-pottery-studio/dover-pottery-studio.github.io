@@ -4,7 +4,7 @@ subtitle: New venues, a new map, and studio happenings
 date: 2026-08-02
 ---
 
-{{< basic-image class="floatright" src="/img/popup-pots-logo.png" alt="Logo for Dover Pottery Studio Pop-Up Pots program" width="30%">}}
+{{< basic-image class="floatright" src="/img/popup-pots-logo.png" alt="Logo for Dover Pottery Studio Pop-Up Pots program" width="30%" border="false">}}
 
 Hello Potters!
 
@@ -18,7 +18,7 @@ It's been a while since our last news update here, and we owe you an explanation
 
 ## Pop-Up Pots is Growing
 
-{{< basic-image class="floatleft" src="/img/2025-11/pop-up-pots.png" alt="Pop-Up Pots logo" width="35%">}}
+{{< basic-image class="floatleft" src="/img/2025-11/pop-up-pots.png" alt="Pop-Up Pots logo" width="35%" border="false">}}
 
 Pop-Up Pots — our on-location, single-session handbuilding workshops — has expanded to more partner venues across the Seacoast and up into Maine. Whether it's a cidery, a brewery, a farm, or a favorite local spot, we're bringing guided clay projects to more communities than ever, with new venues added regularly.
 

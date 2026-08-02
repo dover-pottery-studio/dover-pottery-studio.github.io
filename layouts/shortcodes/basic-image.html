@@ -2,6 +2,8 @@
 {{- $alt := .Get "alt" | default "" -}}
 {{- $class := .Get "class" | default "" -}}
 {{- $width := .Get "width" -}}
+{{- $border := .Get "border" | default "true" -}}
+{{- if eq $border "false" -}}{{- $class = printf "%s no-border" $class -}}{{- end -}}
 
 <div class="bimage">
      <img src="{{ $src | relURL }}"

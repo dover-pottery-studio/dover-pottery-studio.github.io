@@ -159,6 +159,27 @@
   }
 }
 
+/* Status badge ("Class Is Full" / "N Spots Left") - it's the same pill
+   component as the list view below, but the generic text-color rule
+   just above still catches it and forces the dark red/brown body-text
+   color, which reads as dark-red-on-red and is hard to see in light
+   mode. Restore white text (needs one more class than the generic rule
+   to win on specificity) and match the list view's red/sage pill
+   backgrounds. */
+.kilnfire-classes .kilnfire-class-grid-item-padding .kilnfire-class-list-status {
+  color: #ffffff !important;
+  padding: 2px 10px !important;
+  border-radius: 12px !important;
+}
+
+.kilnfire-classes .kilnfire-class-grid-item-padding .kilnfire-class-list-status-full {
+  background-color: #b91c1c !important;
+}
+
+.kilnfire-classes .kilnfire-class-grid-item-padding .kilnfire-class-list-status:not(.kilnfire-class-list-status-full) {
+  background-color: var(--color5) !important;
+}
+
 /* Links and buttons */
 .kilnfire-classes a:not([class*="kilnfire-classes"]) {
   color: var(--color1) !important;
@@ -215,11 +236,31 @@
 
 /* Pop-Up Pots cards (the blocks embed for template 1641, per
    kilnfire-embed.html's data-template-id) drop the instructor credit
-   line, leaving just date and time in bold - Studio Classes' blocks
-   embed has no data-template-id at all (it lists every template, not
-   one), so this doesn't touch it. */
-.kilnfire-classes[data-template-id="1641"] .kilnfire-class-instructors {
+   line and the class description, leaving just date and time in bold -
+   the full description is still one click away on the class page, and
+   these are single-session events so it isn't needed to decide whether
+   to click through. Studio Classes' blocks embed has no data-template-id
+   at all (it lists every template, not one), so this doesn't touch it. */
+.kilnfire-classes[data-template-id="1641"] .kilnfire-class-instructors,
+.kilnfire-classes[data-template-id="1641"] .kilnfire-class-grid-desc {
   display: none !important;
+}
+
+/* Pop-Up Pots cards: move the status badge ("Class Is Full" / "N Spots
+   Left") below the date/time line and center it, instead of Kilnfire's
+   default spot directly under the title. Kilnfire's own markup always
+   renders the badge before the date/time div, so reordering needs flex
+   - turn the padding wrapper into a flex column so `order` can move the
+   badge without touching the underlying markup. */
+.kilnfire-classes[data-template-id="1641"] .kilnfire-class-grid-item-padding {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.kilnfire-classes[data-template-id="1641"] .kilnfire-class-list-status-area {
+  order: 10 !important;
+  text-align: center !important;
+  margin-top: 8px !important;
 }
 
 /* Responsive adjustments */
@@ -628,7 +669,7 @@
 
 @media (prefers-color-scheme: dark) {
   .kilnfire-calendar-day > time {
-    color: #e0e0e0 !important;
+    color: var(--color2) !important;
   }
 }
 
@@ -695,11 +736,11 @@
   }
 
   .kilnfire-calendar-event.kilnfire-calendar-event a {
-    color: white !important;
+    color: var(--color2) !important;
   }
 
   .kilnfire-calendar-event.kilnfire-calendar-event a:hover {
-    color: white !important;
+    color: var(--color1) !important;
   }
 
   .kilnfire-event-not-available.kilnfire-event-not-available {
@@ -730,10 +771,10 @@
 
 @media (prefers-color-scheme: dark) {
   .kilnfire-calendar-event-time.kilnfire-calendar-event-time {
-    color: white !important;
+    color: var(--color2) !important;
   }
   .kilnfire-calendar-event-title.kilnfire-calendar-event-title {
-    color: white !important;
+    color: var(--color2) !important;
   }
 }
 

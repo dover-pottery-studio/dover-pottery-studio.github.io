@@ -9,6 +9,10 @@
   border: 2px solid black;
 }
 
+.bimage img.no-border {
+  border: none;
+}
+
 .bimage img.floatleft {
   float: left;
   margin: 0 1em 1em 0;

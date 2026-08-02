@@ -50,9 +50,14 @@ url = 'https://doverpotterystudio.kilnfire.com/supplies'
 weight = 50
 
 [[menus.main]]
-name = 'About'
-pageRef = '/about'
-weight = 60
+name = 'Gift Cards'
+url = 'https://doverpotterystudio.kilnfire.com/gift-card'
+weight = 55
+
+#[[menus.main]]
+#name = 'About'
+#pageRef = '/about'
+#weight = 60
 
 [[menus.main]]
 name = 'Policies'

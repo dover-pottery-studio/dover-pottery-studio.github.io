@@ -1,9 +1,13 @@
 <!-- layouts/shortcodes/class-modal.html
-     A popup for a single Class Types template: shows the template name
-     plus its live upcoming sessions (via the same kilnfire-upcoming-classes
-     "list" widget used on the Class List tab). Triggered by intercepting
-     clicks on the matching blocks-view card - see initClassTypeModals in
-     static/js/main.js. Hidden by default; JS toggles the "is-open" class.
+     A popup for a single Class Types template: shows the template name,
+     price and description (copied over from the matching blocks-view
+     card by initClassTypeModals in static/js/main.js, since Kilnfire's
+     "list" widget below only has session dates/times, not template-level
+     info), plus its live upcoming sessions (via the same
+     kilnfire-upcoming-classes "list" widget used on the Class List tab).
+     Triggered by intercepting clicks on the matching blocks-view card -
+     see initClassTypeModals in static/js/main.js. Hidden by default; JS
+     toggles the "is-open" class.
 
      Lazy by default (data doesn't fetch until the modal is actually
      opened - see main.revealLazyKilnfireEmbeds) since a page can have
@@ -19,6 +23,8 @@
   <div class="dps-class-modal-area" role="dialog" aria-modal="true" aria-labelledby="dps-class-modal-title-{{ $template }}">
     <button type="button" class="dps-class-modal-close" aria-label="Close">&times;</button>
     <h3 class="dps-class-modal-title" id="dps-class-modal-title-{{ $template }}">{{ $name }}</h3>
+    <div class="dps-class-modal-price"></div>
+    <div class="dps-class-modal-desc"></div>
     <div class="kilnfire-upcoming-classes{{ if not $eager }} kilnfire-lazy-pending{{ end }}" data-org-id="25" data-view="list" data-template-id="{{ $template }}"></div>
   </div>
 </div>

@@ -73,6 +73,50 @@ var main = {
 
     // don't let the calendar "next" arrow land on an empty month
     main.initCalendarBoundaries();
+
+    // drop the "Ages ..." segment from class card price/ages lines
+    main.initStripClassAges();
+  },
+
+  initStripClassAges : function() {
+    // Kilnfire's blocks-view cards render price and ages as two spans
+    // on the same "text-small" line, e.g. "$85 Per Person / Ages 18
+    // and up" - joined by " / " only when a price is present (free
+    // classes render just "Ages 18 and up", no separator at all). The
+    // ages span itself carries no class to hang a CSS selector off,
+    // and hiding it with CSS would leave a stray " / " floating next
+    // to the price, so this strips it (and its separator, if any) as
+    // text. Cards render async via classembed.js, so also watch for
+    // ones inserted after this runs.
+    function stripAges(el) {
+      var spans = el.querySelectorAll(':scope > span');
+      var last = spans[spans.length - 1];
+      if (!last || !/^Ages\b/.test(last.textContent.trim())) { return; }
+      var prev = last.previousSibling;
+      last.remove();
+      if (prev && prev.nodeType === Node.TEXT_NODE && prev.textContent.trim() === '/') {
+        prev.remove();
+      }
+    }
+
+    function stripAll(root) {
+      root.querySelectorAll('.kilnfire-class-grid-text-small').forEach(stripAges);
+    }
+
+    stripAll(document);
+
+    new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        m.addedNodes.forEach(function(node) {
+          if (node.nodeType !== 1) { return; }
+          if (node.matches && node.matches('.kilnfire-class-grid-text-small')) {
+            stripAges(node);
+          } else if (node.querySelectorAll) {
+            stripAll(node);
+          }
+        });
+      });
+    }).observe(document.body, { childList: true, subtree: true });
   },
 
   initCalendarBoundaries : function() {
@@ -177,6 +221,28 @@ var main = {
 
       e.preventDefault();
       e.stopPropagation();
+
+      // Copy price and description over from the card that was clicked -
+      // Kilnfire's own "list" widget inside the modal only has session
+      // dates/times, not this template-level info, but the card already
+      // has it (already ages-stripped, see initStripClassAges).
+      var priceEl = modal.querySelector('.dps-class-modal-price');
+      var descEl = modal.querySelector('.dps-class-modal-desc');
+      var cardPrice = card.querySelector('.kilnfire-class-grid-text-small');
+      var cardDesc = card.querySelector('.kilnfire-class-grid-desc');
+      // A wrapping span can survive with nothing in it (e.g. a free,
+      // ages-stripped class) so check the text itself rather than
+      // relying on a CSS :empty check, which only catches an element
+      // with zero children.
+      if (priceEl) {
+        priceEl.innerHTML = cardPrice ? cardPrice.innerHTML : '';
+        priceEl.style.display = priceEl.textContent.trim() ? '' : 'none';
+      }
+      if (descEl) {
+        descEl.innerHTML = cardDesc ? cardDesc.innerHTML : '';
+        descEl.style.display = descEl.textContent.trim() ? '' : 'none';
+      }
+
       modal.classList.add('is-open');
       document.body.classList.add('dps-modal-open');
       main.revealLazyKilnfireEmbeds(modal);
