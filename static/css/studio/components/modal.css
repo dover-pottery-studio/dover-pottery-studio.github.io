@@ -1,0 +1,99 @@
+/* ==========================================================================
+   CLASS MODAL COMPONENT
+   Custom popup opened from a Class Types card (see class-modal.html
+   shortcode and initClassTypeModals in main.js). Styled to match the
+   Kilnfire calendar's own event modal (see embeds.css).
+   ========================================================================== */
+
+.dps-class-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.dps-class-modal.is-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+body.dps-modal-open {
+  overflow: hidden;
+}
+
+.dps-class-modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 20, 20, 0.75);
+}
+
+.dps-class-modal-area {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background-color: var(--color2);
+  border-radius: 8px;
+  padding: 55px 30px 30px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  .dps-class-modal-area {
+    background-color: var(--color3);
+  }
+}
+
+.dps-class-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color3);
+  color: #ffffff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dps-class-modal-close {
+    background-color: var(--color1);
+    color: var(--color3);
+  }
+}
+
+.dps-class-modal-title {
+  font-family: 'Old Standard TT', serif;
+  color: var(--color3);
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dps-class-modal-title {
+    color: var(--color1);
+  }
+}
+
+@media (max-width: 640px) {
+  .dps-class-modal.is-open {
+    padding: 10px;
+  }
+
+  .dps-class-modal-area {
+    max-height: calc(100vh - 20px);
+    padding: 35px 20px 20px;
+  }
+}

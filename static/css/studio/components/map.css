@@ -1,0 +1,312 @@
+/* ==========================================================================
+   POP-UP POTS VENUE MAP
+   Leaflet map container sizing (see layouts/shortcodes/map-tab.html and
+   static/js/popup-map.js). Leaflet's own tile rendering is left alone - no
+   dark-mode tile variant without a different tile provider, so this stays
+   a light map in both site themes rather than faking a dark filter that
+   would also invert map labels into unreadable text.
+   ========================================================================== */
+
+/* Border stays the same dark blue regardless of site theme - the map
+   itself is always light OSM tiles no matter which mode the page is in,
+   so a border tuned to contrast with the page (light tan in dark mode)
+   ends up blending into the map's own light edge instead. */
+.dps-popup-map {
+  width: 100%;
+  height: 70vh;
+  min-height: 450px;
+  max-height: 750px;
+  border-radius: 8px;
+  border: 2px solid var(--color4);
+  margin: 20px 0;
+}
+
+@media (max-width: 640px) {
+  .dps-popup-map {
+    height: 60vh;
+    min-height: 350px;
+  }
+}
+
+/* The site's global "img:not(.floatleft):not(.floatright):not(.centered)"
+   reset (base.css) sets max-width:100% / display:block / margin:auto on
+   every <img> - Leaflet's absolutely-positioned, precisely-sized tile
+   images need none of that, and losing it breaks the tile grid entirely
+   (blank basemap). Leaflet tags each tile <img> with .leaflet-tile, so
+   override just those rather than touching the sitewide rule. */
+.dps-popup-map .leaflet-tile {
+  max-width: none !important;
+  max-height: none !important;
+  display: block !important;
+  margin: 0 !important;
+}
+
+/* No visible pin/dot (see popup-map.js pinIcon) - the label's own
+   oversized arrow is the only marker, anchored with zero size directly on
+   the coordinate. .dps-map-pin is still the divIcon's className (an empty,
+   zero-size element) so it stays selectorable if that ever changes. */
+.dps-map-pin {
+  display: none;
+}
+
+/* Permanent venue name label - styled like an old luggage/museum tag:
+   mono type on a dark red ground, a crisp (not rounded) edge, and an
+   oversized pointer doing double duty as both the "pin" and the click
+   target that opens the venue's popup.
+
+   Base rule is deliberately ".leaflet-tooltip.dps-map-label" (both
+   classes, not just ours) rather than ".dps-map-label" alone: Leaflet's
+   own leaflet.css is loaded from a <link> inside this shortcode's own
+   markup (map-tab.html), which places it *after* this stylesheet in
+   document order - on the tied specificity of two single-class
+   selectors, Leaflet's own ".leaflet-tooltip { background-color: #fff;
+   border: 1px solid #fff; color: #222; pointer-events: none; }" was
+   winning the cascade and silently overriding background/border/color
+   here (and its pointer-events: none is why clicking the label itself
+   never worked, even with a click listener attached in JS - the element
+   was never actually receiving pointer events). Combining both classes
+   bumps specificity strictly above Leaflet's single-class rule,
+   regardless of load order. */
+.leaflet-tooltip.dps-map-label {
+  background: var(--color3);
+  color: var(--color1);
+  border: 1px solid var(--color1);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  font-family: "PT Mono", monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 3px 8px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.leaflet-tooltip.dps-map-label:hover {
+  background: var(--color1);
+  color: var(--color3);
+}
+
+.dps-map-label-name {
+  display: block;
+}
+
+.dps-map-label-dates {
+  display: block;
+  font-size: 0.9em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+  margin-top: 1px;
+}
+
+/* Leaflet's default arrow is a 6px CSS triangle (a 12x12 transparent
+   border box, pulled flush against the tooltip box edge via matching
+   negative margins - see leaflet.css .leaflet-tooltip-top/-right). Scale
+   it up to 10px so it reads as a real pointer, which means rescaling
+   every one of those coupled margins to match (a bare border-width bump
+   alone would leave the arrow floating in the wrong place). */
+.dps-map-label.leaflet-tooltip-top {
+  margin-top: -10px;
+}
+
+.dps-map-label.leaflet-tooltip-right {
+  margin-left: 10px;
+}
+
+.dps-map-label::before {
+  border-width: 10px !important;
+}
+
+/* Arrow color always matches the label's own current background (not the
+   border) so it reads as the box tapering to a point, not a separate
+   colored accent - same logic on hover, where it follows the hover
+   background instead. Uniform across light/dark now that the label
+   itself no longer changes with the site theme. */
+.dps-map-label.leaflet-tooltip-top::before {
+  margin-bottom: -20px;
+  margin-left: -10px;
+  border-top-color: var(--color3);
+}
+
+.dps-map-label.leaflet-tooltip-top:hover::before {
+  border-top-color: var(--color1);
+}
+
+/* When a venue sits close enough to another one that their labels would
+   overlap, popup-map.js binds the tooltip with direction "right" instead
+   of the default "top" - Leaflet gives that variant its own arrow
+   pseudo-element (border-right-color, not border-top-color, and a
+   different set of coupled margins), needs its own override to match. */
+.dps-map-label.leaflet-tooltip-right::before {
+  margin-left: -20px;
+  margin-top: -10px;
+  border-right-color: var(--color3);
+}
+
+.dps-map-label.leaflet-tooltip-right:hover::before {
+  border-right-color: var(--color1);
+}
+
+/* Legend / venue list, bottom-right corner - that's consistently open
+   ocean at the map's default zoom/center, so it never covers a pin.
+   Width is capped rather than left to shrink-wrap so a bigger font grows
+   the text (wrapping onto a second line for longer names) instead of
+   growing the box itself. */
+.dps-map-legend {
+  background: var(--color2);
+  border: 1px solid var(--color4);
+  border-radius: 6px;
+  padding: 12px 16px;
+  width: 210px;
+  max-height: 50%;
+  overflow-y: auto;
+  font-family: "PT Mono", monospace;
+  font-size: 1.3rem;
+  line-height: 1.25;
+  color: var(--color4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dps-map-legend-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* "Venues" heading stays the blue that's already the legend's base/default
+   text color (matching the map border); the clickable location rows below
+   are called out in red instead, matching the pin labels' palette. */
+.dps-map-legend strong {
+  font-size: 1.15em;
+  color: var(--color4);
+}
+
+.dps-map-legend-toggle {
+  font-weight: 700;
+  font-size: 1.15em;
+  margin-left: 12px;
+  line-height: 1;
+}
+
+.dps-map-legend ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.dps-map-legend.is-collapsed ul {
+  display: none;
+}
+
+.dps-map-legend li {
+  color: var(--color3);
+  cursor: pointer;
+  padding: 6px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dps-map-legend li:first-child {
+  border-top: none;
+}
+
+.dps-map-legend li:hover {
+  color: var(--color1);
+}
+
+.dps-map-legend-loc {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.75;
+}
+
+/* Per-marker popup (click a pin) - fixed light-tan/blue/red palette
+   regardless of site theme (same approach as the pin labels and legend),
+   rather than trying to swap to a dark scheme: the map's own tiles are
+   always light, so a popup sitting on top of them reads best staying
+   light too.
+
+   Selectors are scoped through ".dps-map-popup-window" (the className
+   passed to bindPopup(), landing on the outer .leaflet-popup) rather than
+   bare ".leaflet-popup-content-wrapper"/".leaflet-popup-tip": Leaflet's
+   own leaflet.css sets those same classes' background to white, and
+   since leaflet.css loads from a <link> inside this shortcode's markup -
+   after this stylesheet in document order - a tied single-class
+   specificity was letting Leaflet's white win the cascade (the same bug
+   already hit and fixed for the pin labels). Scoping through the
+   className gives this strictly higher specificity so it wins regardless
+   of load order. */
+.dps-map-popup-window .leaflet-popup-content-wrapper {
+  background: var(--color2);
+  color: var(--color4);
+  border-radius: 8px;
+}
+
+.dps-map-popup-window .leaflet-popup-tip {
+  background: var(--color2);
+}
+
+.leaflet-popup-content {
+  margin: 14px 16px;
+  font-family: "Lora", "Times New Roman", serif;
+  line-height: 1.4;
+}
+
+.dps-map-popup-venue {
+  font-family: "Old Standard TT", serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.dps-map-popup-address {
+  font-size: 1.05rem;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.dps-map-popup-sessions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.dps-map-popup-sessions li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dps-map-popup-sessions li:last-child {
+  border-bottom: none;
+}
+
+.dps-map-popup-session-title {
+  display: block;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+/* Scoped through .dps-map-popup-window (see the wrapper/tip rules above)
+   rather than the bare class alone: Leaflet's own leaflet.css sets
+   ".leaflet-popup-content a { color: #0078A8; }" (a class + type
+   selector, higher specificity than a single class), which otherwise
+   wins and leaves links a light blue no matter what color is set here. */
+.dps-map-popup-window .dps-map-popup-session-link {
+  color: var(--color3);
+  text-decoration: underline;
+}
+
+.dps-map-popup-window .dps-map-popup-session-link:hover {
+  color: var(--color5);
+}
+
+.dps-map-popup-session-date {
+  display: block;
+  font-size: 1.05rem;
+  opacity: 0.85;
+}

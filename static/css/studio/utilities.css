@@ -23,7 +23,7 @@
 .well:has(.card-gallery) {
   text-align: center;
   font-family: "Old Standard TT", serif;
-  font-size: 20pt;
+  font-size: 18pt;
 }
 
 /* --- 404 Page --- */

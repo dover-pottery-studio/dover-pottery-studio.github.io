@@ -21,13 +21,14 @@
           data-img-src-{{add $i 1}}="{{$img.src}}"
          {{end}}
          {{ if $img.desc}}data-img-desc-{{add $i 1}}="{{$img.desc}}"{{end}}
+         {{ if $img.position}}data-img-position-{{add $i 1}}="{{$img.position}}"{{end}}
       {{end}}></div>
   {{ end }}
 
   <header class="header-section {{ if $bigimg }}has-img{{ end }}">
     {{ if $bigimg }}
       {{ $firstimg := index $bigimg 0 }}
-      <div class="intro-header big-img" style="background-image: url('{{$firstimg.src}}');">
+      <div class="intro-header big-img" style="background-image: url('{{$firstimg.src}}');{{ with $firstimg.position }} background-position: {{ . }};{{ end }}">
         {{ $subtitle := $.Scratch.Get "subtitle" }}
         <div class="container">
           <div class="row">
@@ -62,9 +63,6 @@
                 <h1>{{ if .Data.Singular }}#{{ end }}{{ .Title }}</h1>
               {{ else }}
                 <h1>{{ with $title }}{{.}}{{ else }}<br/>{{ end }}</h1>
-              {{ end }}
-              {{ if ne .Type "post" }}
-                <hr class="small">
               {{ end }}
               {{ if $subtitle }}
                 {{ if eq .Type "page" }}

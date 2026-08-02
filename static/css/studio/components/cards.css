@@ -20,6 +20,13 @@
     transition: opacity .2s ease-in-out;
   }
 
+  /* Homepage's two big offering cards (Classes / Pop-Up Pots) - a bit more
+     breathing room between them than the default card-gallery spacing. */
+  .offerings-gallery .card {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
   .card:hover,
   .card:focus {
     color: inherit;
@@ -53,6 +60,8 @@
 
   .card-title {
     font-size: 2.5rem; /* Larger font size for the title */
+    font-weight: 700;
+    margin-top: 0; /* Remove default h5 top margin so it sits close to the logo */
     margin-bottom: 1rem; /* Increased margin */
     text-align: center;
   }
@@ -92,24 +101,33 @@
   }
 
   /* Team member cards */
+  .team-member {
+    max-width: 220px;
+  }
+
   .team-member .team-member-photo {
     width: 140px;
     height: 140px;
-    margin: 20px auto 0;
+    margin: 16px auto 0;
     border-radius: 50%;
     object-fit: cover;
     display: block;
   }
 
+  .team-member .card-body {
+    flex: 0 1 auto;
+    padding: 8px 10px;
+  }
+
   .team-member .card-title {
     font-size: 1.7rem;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.15rem;
   }
 
   .team-member-title {
     color: var(--color3);
     font-weight: 600;
-    margin: 0 0 10px;
+    margin: 0;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -117,9 +135,3 @@
       color: var(--color1);
     }
   }
-
-  .team-member .card-text {
-    font-size: 1rem;
-    text-align: center;
-  }
-  

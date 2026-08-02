@@ -6,7 +6,7 @@
     "description": "Pottery studio offering single and multi-week classes and memberships",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "66 Third Street, LL-100",
+      "streetAddress": "66 Third Street, B-1",
       "addressLocality": "Dover",
       "addressRegion": "NH",
       "postalCode": "03820",

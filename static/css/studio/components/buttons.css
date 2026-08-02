@@ -25,14 +25,14 @@
 @media (prefers-color-scheme: dark) {
   .button,
   .kilnfire-button {
-      background-color: var(--color4);
-      color: var(--color2);
+      background-color: var(--color1);
+      color: var(--color3);
   }
 
   .button:hover,
   .kilnfire-button:hover {
-      background-color: var(--color3);
-      color: var(--color1);
+      background-color: var(--color2);
+      color: var(--color4);
   }
 }
 

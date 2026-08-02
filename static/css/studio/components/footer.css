@@ -4,7 +4,7 @@
    ========================================================================== */
 
 footer {
-  padding: 30px 0;
+  padding: 20px 0 30px;
   background: var(--color3);
   border-top: 1px #EAEAEA solid;
   margin-top: auto;
@@ -31,11 +31,20 @@ footer .list-inline {
   padding: 0;
 }
 
+.footer-address .footer-links {
+  margin-bottom: 15px;
+}
+
 footer .copyright {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
   margin-bottom: 0;
   color: var(--color2)
+}
+
+footer .copyright a {
+  color: var(--color1);
+  text-decoration: underline;
 }
 
 footer .theme-by {
@@ -65,27 +74,46 @@ footer div.disclaimer {
 /* Footer Content Layout */
 .footer-content {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  text-align: left;
+  align-items: center;
+  gap: 50px;
   margin: 0 auto;
   max-width: 800px;
   color: var(--color2);
 }
 
 .footer-address {
-  margin-right: 20px;
+  text-align: center;
+  font-size: 16px;
 }
 
-.footer-map iframe {
-  max-width: 100%;
-  height: auto;
-  padding-bottom: 20px;
+.footer-address p {
+  margin-bottom: 15px;
+}
+
+.footer-directions {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 5px;
+  background-color: var(--color1);
+  color: var(--color3);
+  text-decoration: none;
+  font-family: "PT Mono", monospace;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.footer-directions:hover,
+.footer-directions:focus {
+  background-color: var(--color2);
+  color: var(--color4);
+  text-decoration: none;
 }
 
 @media only screen and (min-width: 768px) {
   footer {
-    padding: 50px 0;
+    padding: 25px 0 50px;
   }
   
   footer .footer-links {

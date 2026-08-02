@@ -1,0 +1,15 @@
+<!-- layouts/shortcodes/map-tab.html
+     Leaflet map of Pop-Up Pots venue locations. Self-contained: Leaflet
+     isn't used anywhere else on the site, so its CSS/JS are loaded here
+     rather than sitewide in head.html/footer.html. Init logic lives in
+     static/js/popup-map.js (see main.js for the site's other JS module
+     conventions - initTabs, initClassTypeModals). -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="preconnect" href="https://a.tile.openstreetmap.org">
+<link rel="preconnect" href="https://b.tile.openstreetmap.org">
+<link rel="preconnect" href="https://c.tile.openstreetmap.org">
+<div id="dps-popup-map" class="dps-popup-map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="{{ "js/popup-map.js" | absURL }}"></script>

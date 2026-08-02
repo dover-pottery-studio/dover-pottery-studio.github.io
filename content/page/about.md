@@ -10,27 +10,14 @@ Dover Pottery Studio is run by a small team of potters who love sharing the craf
 ## Team
 
 {{< card-gallery >}}
-{{< team-member name="Kim" title="Title" >}}A short bio goes here.{{< /team-member >}}
-{{< team-member name="Matt" title="Title" >}}A short bio goes here.{{< /team-member >}}
-{{< team-member name="Athena" title="Title" >}}A short bio goes here.{{< /team-member >}}
-{{< team-member name="Kaleb" title="Title" >}}A short bio goes here.{{< /team-member >}}
-{{< /card-gallery >}}
-
-{{< sep >}}
-
-## Teachers
-
-{{< card-gallery >}}
-{{< team-member name="Liz" title="Teacher" >}}A short bio goes here.{{< /team-member >}}
-{{< team-member name="Izzy" title="Teacher" >}}A short bio goes here.{{< /team-member >}}
-{{< /card-gallery >}}
-
-{{< sep >}}
-
-## Interns
-
-{{< card-gallery >}}
-{{< team-member name="Karen" title="Intern" >}}A short bio goes here.{{< /team-member >}}
-{{< team-member name="Ryan" title="Intern" >}}A short bio goes here.{{< /team-member >}}
-{{< team-member name="Montana" title="Intern" >}}A short bio goes here.{{< /team-member >}}
+{{< team-member name="Kim" title="Owner, Teaching" >}}
+{{< team-member name="Matt" title="Co-owner, Engineering" >}}
+{{< team-member name="Liz" title="Teaching, Kiln Management" >}}
+{{< team-member name="Izzy" title="Teacher" >}}
+{{< team-member name="Kaleb" title="Marketing" >}}
+{{< team-member name="Athena" title="Pop-Up Pots Marketing" >}}
+{{< team-member name="Jeff" title="Pop-Up Pots Operations" >}}
+{{< team-member name="Karen" title="Intern" >}}
+{{< team-member name="Ryan" title="Intern" >}}
+{{< team-member name="Montana" title="Intern" >}}
 {{< /card-gallery >}}

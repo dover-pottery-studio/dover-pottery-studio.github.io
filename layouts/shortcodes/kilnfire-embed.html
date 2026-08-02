@@ -3,5 +3,9 @@
 {{ $orgId := .Get "org-id" | default "25" }}
 {{ $template := .Get "template" }}
 {{ $hideTemplates := .Get "hide-templates" }}
-<div class="kilnfire-classes" data-org-id="{{ $orgId }}" data-view="{{ $view }}"{{ with $template }} data-template-id="{{ . }}"{{ end }}{{ with $hideTemplates }} data-hide-templates="{{ . }}"{{ end }}></div>
+{{ $label := .Get "label" }}
+{{ $divClass := "kilnfire-classes" }}
+{{ if eq $view "list" }}{{ $divClass = "kilnfire-upcoming-classes" }}{{ end }}
+{{ with $label }}<h4 class="kilnfire-embed-label">{{ . }}</h4>{{ end }}
+<div class="{{ $divClass }}" data-org-id="{{ $orgId }}" data-view="{{ $view }}"{{ with $template }} data-template-id="{{ . }}"{{ end }}{{ with $hideTemplates }} data-hide-templates="{{ . }}"{{ end }}></div>
 <script src="https://kilnfire.com/classembed.js"></script>

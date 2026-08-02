@@ -1,0 +1,76 @@
+{
+  "center": [43.20, -70.70],
+  "zoom": 10,
+  "venues": [
+    {
+      "name": "Throwback Brewery",
+      "match": ["throwback"],
+      "lat": 42.9810974,
+      "lng": -70.8342759,
+      "address": "7 Hobbs Rd, North Hampton, NH 03862"
+    },
+    {
+      "name": "Stage Neck Inn",
+      "match": ["stage neck"],
+      "lat": 43.1309266,
+      "lng": -70.6385491,
+      "address": "8 Stage Neck Rd, York Harbor, ME 03911"
+    },
+    {
+      "name": "North Country Hard Cider",
+      "match": ["north country hard cider", "north country cider"],
+      "lat": 43.2372169,
+      "lng": -70.8185677,
+      "address": "3 Front St, Rollinsford, NH 03869"
+    },
+    {
+      "name": "Liar's Bench",
+      "match": ["liar's bench", "liars bench", "liar’s bench"],
+      "lat": 43.0724696,
+      "lng": -70.7687106,
+      "address": "459 Islington St, Portsmouth, NH 03801"
+    },
+    {
+      "name": "Smokin' Barrels",
+      "match": ["smokin' barrels", "smokin barrels", "smokin’ barrels"],
+      "lat": 43.1873134,
+      "lng": -70.9989378,
+      "address": "904 Calef Hwy, Barrington, NH 03825"
+    },
+    {
+      "name": "Butternut Farm",
+      "match": ["butternut farm", "butternut"],
+      "lat": 43.3237529,
+      "lng": -71.0679771,
+      "address": "195 Meaderboro Rd, Farmington, NH 03835"
+    },
+    {
+      "name": "Charlie's Tap House",
+      "match": ["charlie's tap house", "charlies tap house", "charlie’s tap house"],
+      "lat": 42.9000502,
+      "lng": -70.8154774,
+      "address": "9A Ocean Blvd, Hampton, NH 03842"
+    },
+    {
+      "name": "The Bow",
+      "match": ["the bow"],
+      "lat": 43.4858632,
+      "lng": -70.6024115,
+      "address": "21 Ledgewood Ln, Lyman, ME 04002"
+    },
+    {
+      "name": "Chapman Tavern",
+      "match": ["chapman tavern"],
+      "lat": 43.1375269,
+      "lng": -70.6447108,
+      "address": "370 York St, York, ME 03909"
+    },
+    {
+      "name": "Run of the Mill",
+      "match": ["run of the mill"],
+      "lat": 43.4939596,
+      "lng": -70.4486564,
+      "address": "100 Main St, Saco, ME 04072"
+    }
+  ]
+}

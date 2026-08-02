@@ -6,53 +6,66 @@ Do not put anything in this file - it's only here so that hugo won't throw an er
     <div class="footer-address">
         <p>
             <strong>Dover Pottery Studio</strong><br>
-            66 Third Street, LL-100<br>
+            66 Third Street, B-1<br>
             Dover, NH 03820<br>
             info@doverpottery.studio
         </p>
+        <ul class="list-inline text-center footer-links">
+          {{ range .Site.Data.beautifulhugo.social.social_icons }}
+            {{- if isset $.Site.Author .id }}
+              <li>
+		{{ if or ( hasPrefix ( index $.Site.Author .id ) "http://" ) ( hasPrefix ( index $.Site.Author .id ) "https://" ) }}
+		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf "%s" (index $.Site.Author .id) }}" title="{{ .title }}">
+		{{ else }}
+		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf .url (index $.Site.Author .id) }}" title="{{ .title }}">
+		{{ end }}
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            {{- end -}}
+          {{ end }}
+          {{ if .Site.Params.rss }}
+          <li>
+            <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+        <a class="footer-directions" href="https://www.google.com/maps/search/?api=1&query=Dover+Pottery+Studio+66+Third+Street+B-1+Dover+NH+03820" target="_blank" rel="noopener noreferrer">Get Directions →</a>
     </div>
-    <div class="footer-map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2908.5171093345893!2d-70.8806233228671!3d43.198642181710056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e2977db05b4a73%3A0x22773c3c4f0b44fe!2sDover%20Pottery%20Studio!5e0!3m2!1sen!2sus!4v1724003833185!5m2!1sen!2sus"
-            width="300"
-            height="200"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy">
-        </iframe>
-    </div>
-</div>
 
-<hr class="medium" />
-
-<div id="mc_embed_shell">
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-      #mc_embed_signup{width: 600px; clear:left;}
-      /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-         We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-</style>
-<div id="mc_embed_signup">
-  <form action="https://studio.us14.list-manage.com/subscribe/post?u=b9a86d05edd92f3d175f5ad3f&amp;id=c381d18160&amp;f_id=00e5c3e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-      <div id="mc_embed_signup_scroll"><h2>Subscribe to our newsletter!</h2>
-          <div class="mc-field-group"><label for="mce-EMAIL">Email Address</label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
-      <div id="mce-responses" class="clear foot">
-          <div class="response" id="mce-error-response" style="display: none;"></div>
-          <div class="response" id="mce-success-response" style="display: none;"></div>
+    <div id="mc_embed_shell">
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+    <div id="mc_embed_signup">
+      <form action="https://studio.us14.list-manage.com/subscribe/post?u=b9a86d05edd92f3d175f5ad3f&amp;id=c381d18160&amp;f_id=00e5c3e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+          <div id="mc_embed_signup_scroll"><h2>Subscribe to our newsletter!</h2>
+              <div class="mc-field-group"><label for="mce-EMAIL">Email Address</label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
+          <div id="mce-responses" class="clear foot">
+              <div class="response" id="mce-error-response" style="display: none;"></div>
+              <div class="response" id="mce-success-response" style="display: none;"></div>
+          </div>
+      <div aria-hidden="true" style="position: absolute; left: -5000px;">
+          /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+          <input type="text" name="b_b9a86d05edd92f3d175f5ad3f_c381d18160" tabindex="-1" value="">
       </div>
-  <div aria-hidden="true" style="position: absolute; left: -5000px;">
-      /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-      <input type="text" name="b_b9a86d05edd92f3d175f5ad3f_c381d18160" tabindex="-1" value="">
-  </div>
-      <div class="optionalParent">
-          <div class="clear foot">
-            <div class="button-wrapper">
-              <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
-            </div>
+          <div class="optionalParent">
+              <div class="clear foot">
+                <div class="button-wrapper">
+                  <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+                </div>
+              </div>
           </div>
       </div>
-  </div>
-</form>
+    </form>
+    </div>
+    </div>
 </div>
 
 <hr class="long" />

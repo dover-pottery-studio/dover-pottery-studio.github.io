@@ -6,7 +6,8 @@
 /* --- Signup Form --- */
 
 #mc_embed_signup {
-  max-width: 40%;
+  width: 100%;
+  max-width: 400px;
   clear: left;
   font: 16px "PT Mono", monospace;
   margin: 0 auto;
@@ -19,9 +20,36 @@
 
 /* Override Mailchimp's own classic embed CSS, which loads after ours.
    The form always sits on the footer's dark background (color3 in light
-   mode, color4 in dark mode), so the button uses gold rather than the
-   site's usual dark button fill, which would blend into the footer. */
+   mode, color4 in dark mode), so the input and button use the palette
+   rather than Mailchimp's default plain-white/grey styling. */
+#mc_embed_signup input.email {
+  background-color: var(--color2) !important;
+  color: var(--color4) !important;
+  border: none !important;
+  border-radius: 5px !important;
+}
+
+/* Mailchimp's own CSS puts .foot in a 3fr/1fr grid meant for a layout
+   with extra fields we don't use, which leaves our lone button-wrapper
+   sized to only the first column instead of the full row. Flatten it
+   back to a single block so the button can actually center. */
+#mc_embed_signup .foot {
+  display: block !important;
+  width: 96% !important;
+}
+
+#mc_embed_signup .mc-field-group {
+  text-align: center;
+}
+
+#mc_embed_signup .button-wrapper {
+  width: 100% !important;
+  text-align: center;
+}
+
 #mc_embed_signup input.button {
+  display: block !important;
+  margin: 0 auto !important;
   background-color: var(--color1) !important;
   color: var(--color3) !important;
   border: none !important;

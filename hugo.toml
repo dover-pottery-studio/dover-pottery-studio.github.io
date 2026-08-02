@@ -12,7 +12,7 @@ facebook = "https://www.facebook.com/doverpottery.studio"
 instagram = "https://www.instagram.com/doverpottery.studio/"
 
 [Params]
-subtitle = "a learning artspace"
+subtitle = "a learning artspace in downtown Dover, NH"
 mainSections = ["posts"]
 description = "Join our pottery classes in Dover and learn the art of pottery. Sign up today at Dover Pottery Studio."
 logo = "img/dps-logo-v2-gold.png"
@@ -35,13 +35,13 @@ pageRef = '/pop-up-pots'
 weight = 25
 
 [[menus.main]]
-name = 'Memberships'
-pageRef = '/memberships'
+name = 'News'
+pageRef = '/posts'
 weight = 30
 
 [[menus.main]]
-name = 'News'
-pageRef = '/posts'
+name = 'Memberships'
+pageRef = '/memberships'
 weight = 40
 
 [[menus.main]]
@@ -53,6 +53,11 @@ weight = 50
 name = 'About'
 pageRef = '/about'
 weight = 60
+
+[[menus.main]]
+name = 'Policies'
+pageRef = '/policies'
+weight = 70
 
 [module]
   [module.hugoVersion]

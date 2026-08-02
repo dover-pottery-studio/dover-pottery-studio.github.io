@@ -64,6 +64,100 @@ var main = {
 
     // show the big header image
     main.initImgs();
+
+    // build tab navigation for any {{< tabs >}} shortcode blocks
+    main.initTabs();
+
+    // intercept Class Types card clicks to open the matching {{< class-modal >}}
+    main.initClassTypeModals();
+  },
+
+  initClassTypeModals : function() {
+    // Kilnfire's blocks-view cards are inserted into the DOM after page
+    // load by their own script, so listen on document rather than
+    // attaching to the cards directly. Use the capture phase so this
+    // runs before Kilnfire's own click handler on the card (which
+    // otherwise gets first crack at the event and can stop it from ever
+    // reaching a bubble-phase listener here).
+    document.addEventListener('click', function(e) {
+      var card = e.target.closest('a.kilnfire-class-grid-item');
+      if (!card) { return; }
+
+      var templateId = card.getAttribute('id');
+      var modal = templateId && document.getElementById('dps-class-modal-' + templateId);
+      if (!modal) { return; } // no modal built for this template - fall through to normal navigation
+
+      e.preventDefault();
+      e.stopPropagation();
+      modal.classList.add('is-open');
+      document.body.classList.add('dps-modal-open');
+    }, true);
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.classList.contains('dps-class-modal-bg') && !e.target.closest('.dps-class-modal-close')) { return; }
+      var modal = e.target.closest('.dps-class-modal');
+      if (modal) {
+        modal.classList.remove('is-open');
+        document.body.classList.remove('dps-modal-open');
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Escape') { return; }
+      var open = document.querySelector('.dps-class-modal.is-open');
+      if (open) {
+        open.classList.remove('is-open');
+        document.body.classList.remove('dps-modal-open');
+      }
+    });
+  },
+
+  initTabs : function() {
+    document.querySelectorAll('.tabs-component').forEach(function(component, groupIndex) {
+      var content = component.querySelector('.tab-content');
+      if (!content) { return; }
+
+      var panes = Array.prototype.filter.call(content.children, function(el) {
+        return el.classList.contains('tab-pane-source');
+      });
+      if (!panes.length) { return; }
+
+      var nav = document.createElement('ul');
+      nav.className = 'nav nav-tabs';
+      nav.setAttribute('role', 'tablist');
+
+      panes.forEach(function(pane, i) {
+        var id = 'tabs-' + groupIndex + '-pane-' + i;
+        pane.id = id;
+        pane.classList.remove('tab-pane-source');
+        pane.classList.add('tab-pane');
+
+        var li = document.createElement('li');
+        li.setAttribute('role', 'presentation');
+
+        var a = document.createElement('a');
+        a.href = '#' + id;
+        a.setAttribute('role', 'tab');
+        a.textContent = pane.getAttribute('data-tab-name') || ('Tab ' + (i + 1));
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          Array.prototype.forEach.call(nav.querySelectorAll('li'), function(el) { el.classList.remove('active'); });
+          panes.forEach(function(p) { p.classList.remove('active'); });
+          li.classList.add('active');
+          pane.classList.add('active');
+        });
+
+        if (i === 0) {
+          li.className = 'active';
+          pane.classList.add('active');
+        }
+
+        li.appendChild(a);
+        nav.appendChild(li);
+      });
+
+      component.insertBefore(nav, content);
+    });
   },
 
   initImgs : function() {

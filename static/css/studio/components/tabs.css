@@ -1,0 +1,87 @@
+/* ==========================================================================
+   TABS COMPONENT
+   Reusable tab UI. The {{< tabs >}}/{{< tab >}} shortcodes emit static
+   markup only; static/js/main.js (initTabs) builds the nav and wires up
+   switching at runtime, since Hugo can't coordinate state between a parent
+   shortcode and its nested children at render time.
+   ========================================================================== */
+
+.tabs-component {
+  margin: 20px 0;
+}
+
+.tabs-component .tab-pane {
+  display: none;
+}
+
+.tabs-component .tab-pane.active {
+  display: block;
+}
+
+/* Before JS runs, show the raw stacked sources rather than nothing */
+.tabs-component .tab-pane-source + .tab-pane-source {
+  margin-top: 20px;
+}
+
+.tabs-component .nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-bottom: 2px solid var(--color4);
+  margin-bottom: 10px;
+}
+
+.tabs-component .nav-tabs > li {
+  float: none;
+  margin-bottom: -2px;
+}
+
+.tabs-component .nav-tabs > li > a {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  margin-right: 0;
+  padding: 10px 18px;
+  font-family: "PT Mono", monospace;
+  color: var(--color4);
+}
+
+.tabs-component .nav-tabs > li > a:hover,
+.tabs-component .nav-tabs > li > a:focus {
+  background: transparent;
+  border-color: transparent;
+  border-bottom-color: var(--color1);
+  color: var(--color3);
+}
+
+.tabs-component .nav-tabs > li.active > a,
+.tabs-component .nav-tabs > li.active > a:hover,
+.tabs-component .nav-tabs > li.active > a:focus {
+  background: transparent !important;
+  border: none;
+  border-bottom: 3px solid var(--color1) !important;
+  color: var(--color3);
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tabs-component .nav-tabs {
+    border-bottom-color: var(--color2);
+  }
+
+  .tabs-component .nav-tabs > li > a {
+    color: var(--color2);
+  }
+
+  .tabs-component .nav-tabs > li > a:hover,
+  .tabs-component .nav-tabs > li > a:focus {
+    color: var(--color1);
+  }
+
+  .tabs-component .nav-tabs > li.active > a,
+  .tabs-component .nav-tabs > li.active > a:hover,
+  .tabs-component .nav-tabs > li.active > a:focus {
+    color: var(--color1);
+  }
+}
