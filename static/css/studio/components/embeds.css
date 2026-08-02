@@ -94,13 +94,16 @@
   padding: 10px 15px !important;
 }
 
-/* Headings and titles - same weight/color as the rest of the site's
-   headings. Explicit color (not just inherited from base.css) because
-   Kilnfire sets its own color on these, which wins in dark mode
-   otherwise. */
+/* Headings and titles - same font/weight/color as the rest of the site's
+   headings. Explicit font-family and color (not just inherited from
+   base.css) because Kilnfire sets its own on these, which wins in dark
+   mode otherwise - Kilnfire ships its own font swap as part of its dark
+   theme, which is why this was only visibly wrong in dark mode even
+   though the rule was never doubled for light mode either. */
 .kilnfire-classes h3,
 .kilnfire-classes h4,
 .kilnfire-classes h5 {
+  font-family: "Old Standard TT", serif !important;
   color: var(--color4) !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
@@ -117,9 +120,10 @@
   }
 }
 
-/* Paragraph text - matches the homepage card-text styling */
+/* Paragraph text (the class description) - normal body serif, not the
+   monospace used for the shorter date/instructor/badge fields below. */
 .kilnfire-classes p {
-  font-family: "PT Mono", monospace !important;
+  font-family: "Lora", "Times New Roman", serif !important;
   color: var(--color3) !important;
   font-size: 1.2rem !important;
   line-height: 1.5 !important;
@@ -133,9 +137,25 @@
   white-space: normal !important;
 }
 
+/* Everything else in a card's text area (date/time, instructor credit
+   line, status badge) that isn't a heading, the description paragraph,
+   or a link - Kilnfire renders these in plain divs/spans that nothing
+   above reaches, so they were falling back to Kilnfire's own font/color
+   (most visible in dark mode, where Kilnfire's theme swaps in a
+   different font entirely). Font stays mono here (short label-style
+   fields, distinct from the description's body serif); text is tan in
+   dark mode, links stay gold via the rule below regardless of mode. */
+.kilnfire-classes .kilnfire-class-grid-item-padding :not(h3):not(h4):not(h5):not(a):not(p) {
+  font-family: "PT Mono", monospace !important;
+}
+
+.kilnfire-classes .kilnfire-class-grid-item-padding :not(h3):not(h4):not(h5):not(a) {
+  color: var(--color3) !important;
+}
+
 @media (prefers-color-scheme: dark) {
-  .kilnfire-classes.kilnfire-classes p {
-    color: var(--color1) !important;
+  .kilnfire-classes .kilnfire-class-grid-item-padding :not(h3):not(h4):not(h5):not(a) {
+    color: var(--color2) !important;
   }
 }
 
@@ -657,23 +677,23 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .kilnfire-calendar-event {
+  .kilnfire-calendar-event.kilnfire-calendar-event {
     background-color: var(--color3) !important;
   }
-  
-  li.kilnfire-calendar-event {
+
+  li.kilnfire-calendar-event.kilnfire-calendar-event {
     background-color: var(--color3) !important;
   }
-  
-  .kilnfire-calendar-event a {
+
+  .kilnfire-calendar-event.kilnfire-calendar-event a {
     color: white !important;
   }
-  
-  .kilnfire-calendar-event a:hover {
+
+  .kilnfire-calendar-event.kilnfire-calendar-event a:hover {
     color: white !important;
   }
-  
-  .kilnfire-event-not-available {
+
+  .kilnfire-event-not-available.kilnfire-event-not-available {
     background-color: var(--color3) !important;
     opacity: 0.7 !important;
   }
@@ -700,10 +720,10 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .kilnfire-calendar-event-time {
+  .kilnfire-calendar-event-time.kilnfire-calendar-event-time {
     color: white !important;
   }
-  .kilnfire-calendar-event-title {
+  .kilnfire-calendar-event-title.kilnfire-calendar-event-title {
     color: white !important;
   }
 }
