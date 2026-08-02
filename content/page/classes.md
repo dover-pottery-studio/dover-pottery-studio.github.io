@@ -17,7 +17,7 @@ We offer pottery classes for all skill levels, with new sessions roughly every t
 {{< class-modal template="101" name="Wheel Classes" >}}
 {{< /tab >}}
 {{< tab name="Calendar" >}}
-{{< kilnfire-embed view="calendar" hide-templates="1641" >}}
+{{< kilnfire-embed view="calendar" hide-templates="1641" defer="true" >}}
 {{< /tab >}}
 {{< /tabs >}}
 

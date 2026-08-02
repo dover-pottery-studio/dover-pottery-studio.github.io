@@ -10,10 +10,10 @@ Pop-Up Pots are on-location, single-session handbuilding classes hosted at partn
 {{< tabs >}}
 {{< tab name="Classes" >}}
 {{< kilnfire-embed view="blocks" template="1641" >}}
-{{< class-modal template="1641" name="Pop-Up Pots" >}}
+{{< class-modal template="1641" name="Pop-Up Pots" eager="true" >}}
 {{< /tab >}}
 {{< tab name="Calendar" >}}
-{{< kilnfire-embed view="calendar" template="1641" >}}
+{{< kilnfire-embed view="calendar" template="1641" defer="true" >}}
 {{< /tab >}}
 {{< tab name="Map" >}}
 {{< map-tab >}}

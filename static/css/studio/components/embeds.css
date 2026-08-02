@@ -213,6 +213,15 @@
   display: none !important;
 }
 
+/* Pop-Up Pots cards (the blocks embed for template 1641, per
+   kilnfire-embed.html's data-template-id) drop the instructor credit
+   line, leaving just date and time in bold - Studio Classes' blocks
+   embed has no data-template-id at all (it lists every template, not
+   one), so this doesn't touch it. */
+.kilnfire-classes[data-template-id="1641"] .kilnfire-class-instructors {
+  display: none !important;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .kilnfire-classes > div {

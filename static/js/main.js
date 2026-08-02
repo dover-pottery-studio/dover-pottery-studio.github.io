@@ -70,6 +70,94 @@ var main = {
 
     // intercept Class Types card clicks to open the matching {{< class-modal >}}
     main.initClassTypeModals();
+
+    // don't let the calendar "next" arrow land on an empty month
+    main.initCalendarBoundaries();
+  },
+
+  initCalendarBoundaries : function() {
+    // Kilnfire's calendar widget only renders once its own script runs
+    // (async, after page load), and can be inside a not-yet-active tab
+    // pane besides - so watch for .kilnfire-calendar-desktop containers
+    // appearing anywhere, rather than assuming they exist yet.
+    var wired = new WeakSet();
+
+    function wireCalendar(calendar) {
+      if (wired.has(calendar)) { return; }
+      wired.add(calendar);
+
+      var advancing = false;
+      var settleTimer = null;
+
+      // Delegated on the container (not attached directly to the button)
+      // because Kilnfire re-renders its header/buttons as fresh DOM nodes
+      // on every month navigation - a direct listener would only survive
+      // the first click.
+      calendar.addEventListener('click', function(e) {
+        if (e.target.closest('.kilnfire-calendar-button-next')) {
+          advancing = true;
+        } else if (e.target.closest('.kilnfire-calendar-button-prev')) {
+          advancing = false;
+        }
+      });
+
+      function hasEvents() {
+        return calendar.querySelectorAll('.kilnfire-calendar-event').length > 0;
+      }
+
+      // Kilnfire re-renders the grid in steps as it loads the new month's
+      // data, so don't judge "empty" off the first mutation - wait for
+      // things to settle first.
+      new MutationObserver(function() {
+        if (!advancing) { return; }
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(function() {
+          if (!advancing) { return; }
+          var prevBtn = calendar.querySelector('.kilnfire-calendar-button-prev');
+          if (prevBtn && !hasEvents()) {
+            advancing = false;
+            prevBtn.click();
+          }
+        }, 400);
+      }).observe(calendar, { childList: true, subtree: true });
+    }
+
+    document.querySelectorAll('.kilnfire-calendar-desktop').forEach(wireCalendar);
+
+    new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        m.addedNodes.forEach(function(node) {
+          if (node.nodeType !== 1) { return; }
+          if (node.matches && node.matches('.kilnfire-calendar-desktop')) {
+            wireCalendar(node);
+          } else if (node.querySelectorAll) {
+            node.querySelectorAll('.kilnfire-calendar-desktop').forEach(wireCalendar);
+          }
+        });
+      });
+    }).observe(document.body, { childList: true, subtree: true });
+  },
+
+  // Kilnfire embeds marked defer="true"/eager left off ({{< kilnfire-embed >}}
+  // and {{< class-modal >}}) skip their own <script src=classembed.js> tag
+  // at render time and get a "kilnfire-lazy-pending" marker instead - a
+  // page loading several of these simultaneously (5 class-type modals plus
+  // a calendar view, on Studio Classes) was tripping Kilnfire's own rate
+  // limiting (429s) by firing that many requests at once regardless of
+  // whether the visitor ever looks at most of them. Call this once the
+  // container holding a lazy embed actually becomes visible (a tab
+  // activating, a modal opening) to fetch just that one on demand instead.
+  loadKilnfireEmbedScript : function() {
+    var script = document.createElement('script');
+    script.src = 'https://kilnfire.com/classembed.js';
+    document.body.appendChild(script);
+  },
+
+  revealLazyKilnfireEmbeds : function(container) {
+    var pending = container.querySelectorAll('.kilnfire-lazy-pending');
+    if (!pending.length) { return; }
+    pending.forEach(function(el) { el.classList.remove('kilnfire-lazy-pending'); });
+    main.loadKilnfireEmbedScript();
   },
 
   initClassTypeModals : function() {
@@ -91,6 +179,7 @@ var main = {
       e.stopPropagation();
       modal.classList.add('is-open');
       document.body.classList.add('dps-modal-open');
+      main.revealLazyKilnfireEmbeds(modal);
     }, true);
 
     document.addEventListener('click', function(e) {
@@ -145,11 +234,13 @@ var main = {
           panes.forEach(function(p) { p.classList.remove('active'); });
           li.classList.add('active');
           pane.classList.add('active');
+          main.revealLazyKilnfireEmbeds(pane);
         });
 
         if (i === 0) {
           li.className = 'active';
           pane.classList.add('active');
+          main.revealLazyKilnfireEmbeds(pane);
         }
 
         li.appendChild(a);

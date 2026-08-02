@@ -4,8 +4,10 @@
 {{ $template := .Get "template" }}
 {{ $hideTemplates := .Get "hide-templates" }}
 {{ $label := .Get "label" }}
+{{ $defer := .Get "defer" }}
 {{ $divClass := "kilnfire-classes" }}
 {{ if eq $view "list" }}{{ $divClass = "kilnfire-upcoming-classes" }}{{ end }}
+{{ if $defer }}{{ $divClass = printf "%s kilnfire-lazy-pending" $divClass }}{{ end }}
 {{ with $label }}<h4 class="kilnfire-embed-label">{{ . }}</h4>{{ end }}
 <div class="{{ $divClass }}" data-org-id="{{ $orgId }}" data-view="{{ $view }}"{{ with $template }} data-template-id="{{ . }}"{{ end }}{{ with $hideTemplates }} data-hide-templates="{{ . }}"{{ end }}></div>
-<script src="https://kilnfire.com/classembed.js"></script>
+{{ if not $defer }}<script src="https://kilnfire.com/classembed.js"></script>{{ end }}
