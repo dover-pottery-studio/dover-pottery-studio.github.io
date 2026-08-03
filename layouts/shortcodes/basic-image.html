@@ -4,10 +4,14 @@
 {{- $width := .Get "width" -}}
 {{- $border := .Get "border" | default "true" -}}
 {{- if eq $border "false" -}}{{- $class = printf "%s no-border" $class -}}{{- end -}}
+{{- $link := .Get "link" | default "" -}}
+{{- $isExternal := strings.HasPrefix $link "http" -}}
 
 <div class="bimage">
+     {{ with $link }}<a href="{{ . }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ end }}
      <img src="{{ $src | relURL }}"
           alt="{{ $alt }}"
           class="{{ $class }}"
           {{ with $width }}style="width:{{.}};"{{ end }} />
+     {{ with $link }}</a>{{ end }}
 </div>
