@@ -135,16 +135,26 @@
   // Two venues can sit close enough together (e.g. Chapman Tavern and
   // Stage Neck Inn, both in York/York Harbor) that their always-on name
   // labels overlap if both float directly above their pin. Nudge a new
-  // venue's label out to the side instead when an already-placed venue is
-  // within this rough distance - a plain lat/lng delta is good enough at
-  // the scale this map operates at, no need for real haversine math.
-  var LABEL_COLLISION_THRESHOLD = 0.02;
+  // venue's label out to the side instead when an already-placed venue
+  // renders within this many screen pixels.
+  //
+  // A raw lat/lng delta was tried first and broke on Smokin' Barrels vs.
+  // North Country Hard Cider: they're at nearly the same latitude but
+  // ~0.1 deg apart in longitude, which reads as "far" in degrees but is
+  // only ~70px apart on screen at this zoom, since a degree of longitude
+  // covers fewer real-world (and therefore on-screen) meters than a
+  // degree of latitude the further you get from the equator. Projecting
+  // through the map (leafletMap.latLngToContainerPoint) accounts for that
+  // distortion and for zoom, so it stays correct if the venue list or the
+  // hand-picked zoom in pop-up-pots-venues.json ever changes.
+  var LABEL_COLLISION_THRESHOLD_PX = 130;
 
   function isNearExistingVenue(venue) {
+    var point = leafletMap.latLngToContainerPoint([venue.lat, venue.lng]);
     return Object.keys(venueMarkers).some(function (key) {
-      var other = venueMarkers[key].venue;
-      return Math.abs(other.lat - venue.lat) < LABEL_COLLISION_THRESHOLD
-        && Math.abs(other.lng - venue.lng) < LABEL_COLLISION_THRESHOLD;
+      var otherPoint = venueMarkers[key].marker.getLatLng();
+      otherPoint = leafletMap.latLngToContainerPoint(otherPoint);
+      return point.distanceTo(otherPoint) < LABEL_COLLISION_THRESHOLD_PX;
     });
   }
 
