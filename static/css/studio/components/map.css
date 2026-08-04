@@ -117,6 +117,10 @@
   margin-left: 10px;
 }
 
+.dps-map-label.leaflet-tooltip-bottom {
+  margin-top: 10px;
+}
+
 .dps-map-label::before {
   border-width: 10px !important;
 }
@@ -137,10 +141,11 @@
 }
 
 /* When a venue sits close enough to another one that their labels would
-   overlap, popup-map.js binds the tooltip with direction "right" instead
-   of the default "top" - Leaflet gives that variant its own arrow
-   pseudo-element (border-right-color, not border-top-color, and a
-   different set of coupled margins), needs its own override to match. */
+   overlap, popup-map.js binds the tooltip with direction "right" or
+   "bottom" instead of the default "top" - Leaflet gives each variant its
+   own arrow pseudo-element (border-right-color / border-bottom-color,
+   not border-top-color, and their own coupled margins), needs its own
+   override to match. */
 .dps-map-label.leaflet-tooltip-right::before {
   margin-left: -20px;
   margin-top: -10px;
@@ -149,6 +154,16 @@
 
 .dps-map-label.leaflet-tooltip-right:hover::before {
   border-right-color: var(--color1);
+}
+
+.dps-map-label.leaflet-tooltip-bottom::before {
+  margin-top: -20px;
+  margin-left: -10px;
+  border-bottom-color: var(--color3);
+}
+
+.dps-map-label.leaflet-tooltip-bottom:hover::before {
+  border-bottom-color: var(--color1);
 }
 
 /* Legend / venue list, bottom-right corner - that's consistently open

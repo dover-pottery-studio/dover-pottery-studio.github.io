@@ -182,16 +182,19 @@
         }
       });
       if (isNearExistingVenue(venue)) {
-        // Icon's tooltipAnchor ([0, -8], tuned for the default top
-        // placement) still applies underneath this offset (they add
-        // together), so this cancels the upward bias back out and
-        // re-anchors level with the coordinate instead of above it:
-        // [0, -8] + [10, 8] = [10, 0], level with the point, offset right.
+        // Drop the label below the pin instead of the default top
+        // placement, so it doesn't stack on top of (and hide the arrow
+        // of) the already-placed venue's label above it. Icon's
+        // tooltipAnchor ([0, -8], tuned for the default top placement)
+        // still applies underneath this offset (they add together):
+        // [0, -8] + [0, 16] = [0, 8], an 8px gap below the point -
+        // mirroring the 8px gap the default top placement gets for free
+        // from tooltipAnchor alone.
         marker.bindTooltip(venue.name, {
           permanent: true,
           interactive: true,
-          direction: 'right',
-          offset: [10, 8],
+          direction: 'bottom',
+          offset: [0, 16],
           className: 'dps-map-label'
         });
       } else {
